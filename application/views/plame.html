@@ -1,0 +1,94 @@
+<div id="content">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html"><i class="fa fa-home"></i>Inicio</a>
+      </li>
+      <li class="breadcrumb-item"><i class="fa fa-fw fa-wrench"></i>Maestros</li>
+      <li class="breadcrumb-item"><i class="fa fa-money"></i>Conceptos Plame</li>
+    </ol>
+    <nav class="navbar navbar-light bg-light">
+        <div class="navbar-nav mr-auto">
+          <span class="navbar-brand mb-0 h1">Conceptos Plame</span>
+        </div>
+        <div class="navbar-nav ml-auto">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary" id="btn-Exportb"><i class="fa fa-cloud-download"></i>&nbsp;Exportar</button>
+            <button type="button" class="btn btn-dark" id="btn-conceptop" data-toggle="modal" data-target="#Modal-plame"><i class="fa fa-plus"></i>&nbsp;Agregar</button>
+          </div>
+        </div>
+    </nav><br>
+    <div class="row">
+      <div class="col-6">
+        <h5 class="modal-title">Ingresos</h5><hr>
+        <table id="tbt-ingresop" class="display nowrap compact" style="width:100%;">
+          <thead>
+              <tr>
+                  <th>CODIGO</th>
+                  <th>DESCRIPCIÓN</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="col-6">
+        <h5 class="modal-title">Descuentos</h5><hr>
+        <table id="tbt-descuentop" class="display nowrap compact" style="width:100%;">
+          <thead>
+              <tr>
+                  <th>CODIGO</th>
+                  <th>DESCRIPCIÓN</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <!-- Modal -->
+<div class="modal fade" id="Modal-plame" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lbl-plame">Agregar Concepto Plame</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-6 mb-3">
+            <input type="text" class="form-control form-control-sm" id="txt-codigoplame" placeholder="Código">
+          </div>
+          <div class="col-6 mb-3">
+            <input type="text" class="form-control form-control-sm" id="txt-plamedesc" placeholder="Descripción">
+          </div>
+          <div class="col-12 mt-3 text-center">
+            <div class="form-group small">
+              <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="rd-plame" id="rd-ingresop" value="I"> Ingreso
+                  </label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="rd-plame" id="rd-descuentop" value="D"> Descuento
+                  </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="btn-insert-conceptosp">Guardar</button>
+        <button type="button" class="btn btn-primary" id="btn-update-conceptosp" data-idplame="" style="display: none;">Guardar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

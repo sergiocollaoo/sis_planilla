@@ -1,0 +1,16 @@
+.titulo{
+    font-size: 14.5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.subtitulo{
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.cuerpo{
+    font-size: 13.5px;
+    text-align: justify;
+}

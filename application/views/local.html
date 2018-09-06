@@ -1,0 +1,62 @@
+<div id="content">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html"><i class="fa fa-home"></i>Inicio</a>
+      </li>
+      <li class="breadcrumb-item"><i class="fa fa-fw fa-wrench"></i>Maestros</li>
+      <li class="breadcrumb-item"><i class="fa fa-bank"></i>Local</li>
+    </ol>
+    <nav class="navbar navbar-light bg-light">
+        <div class="navbar-nav mr-auto">
+          <span class="navbar-brand mb-0 h1">Local</span>
+        </div>
+        <div class="navbar-nav ml-auto">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary" id="btn-Exportl"><i class="fa fa-cloud-download"></i>&nbsp;Exportar</button>
+            <button type="button" class="btn btn-dark" id="btn-local" data-toggle="modal" data-target="#Modal-local"><i class="fa fa-plus"></i>&nbsp;Nuevo</button>
+          </div>
+        </div>
+    </nav><br>
+    <div class="row">
+      <div class="col-12">
+        <table id="tbt-local" class="display nowrap compact" style="width:100%">
+          <thead>
+              <tr>
+                  <th>NRO</th>
+                  <th>DESCRIPCIÓN</th>
+                  <th>ESTADO</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <!-- Modal -->
+<div class="modal fade" id="Modal-local" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lbl-local">Nuevo local</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <input type="text" class="form-control form-control-sm" id="txt-local" placeholder="Local">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="btn-insert-local">Guardar</button>
+        <button type="button" class="btn btn-primary" id="btn-update-local" data-idlocal="" style="display: none;">Guardar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

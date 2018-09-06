@@ -1,0 +1,356 @@
+<div id="content"> 
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Aperturar Boleta</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Asistencia</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Boleta</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+      <div class="row">
+        <div class="col-sm-5 pb-3">
+          <div class="form-inline pb-3">
+            <div class="form-group">
+              <label>Perdiodo:</label>
+              <select class="form-control form-control-sm mx-sm-3 cbo-periodo">
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Año:</label>
+              <input type="text" class="form-control form-control-sm mx-sm-3 txt-añoactual" style="width: 70px;" readonly="">
+            </div>
+          </div>
+          <div class="form-inline pb-3">
+            <div class="form-group">
+                <label>Tipo de boleta:</label>
+                <select class="form-control form-control-sm mx-sm-3 cbo-tipoboleta" style="width: 250px;">
+                </select>
+            </div>
+          </div>
+          <fieldset>
+            <legend>Rango de fechas:</legend>
+            <div class="form-inline">
+              <div class="form-group">
+                <label>Inicio:</label>
+                <input type="date" class="form-control form-control-sm mx-sm-3" id="txt-fechai" readonly="">
+              </div>
+              <div class="form-group">
+                <label>Fin:</label>
+                <input type="date" class="form-control form-control-sm mx-sm-3" id="txt-fechaf" readonly="">
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="col-sm-7 pb-3">
+          <table id="tbt-periodo" class="display nowrap compact" style="width:100%">
+            <thead>
+              <tr>
+                <th>NRO</th>
+                <th>DESCRIPCIÓN</th>
+                <th>FECHA INICIO</th>
+                <th>FECHA FIN</th>
+               </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+        </div>
+        <div class="col-sm-5 text-center">
+          <button type="button" class="btn btn-outline-success">Guardar</button>
+          <button type="button" class="btn btn-outline-info">Limpiar</button>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-inline pb-3">
+            <div class="form-group">
+              <label>Tipo de documento:</label>
+              <select class="form-control form-control-sm mx-sm-3 cbo-tipodoc" style="width: 170px;">
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Nro. documento:</label>
+              <input type="text" class="form-control form-control-sm mx-sm-2 txt-" style="width: 110px;">
+            </div>
+            <div class="form-group">
+              <label>Fecha ingreso:</label>
+              <input type="text" class="form-control form-control-sm mx-sm-2 txt-" style="width: 130px;">
+            </div>
+            <div class="form-group">
+              <label>Fecha cese:</label>
+              <input type="text" class="form-control form-control-sm mx-sm-2 txt-" style="width: 130px;">
+            </div>
+          </div>
+          <div class="form-inline pb-3">
+            <div class="form-group">
+              <label>Apellidos y nombres:</label>
+              <input type="text" class="form-control form-control-sm mx-sm-2 txt-" style="width: 400px;">
+            </div>
+            <div class="form-group">
+              <label>Cargo:</label>
+              <select class="form-control form-control-sm mx-sm-3 cbo-cargo" style="width: 392px;">
+              </select>
+            </div>
+          </div>
+          <div class="form-inline pb-3">
+            <div class="form-group">
+              <label>Régimen pensionario:</label>
+              <select class="form-control form-control-sm mx-sm-3 cbo-regpension" style="width: 170px;">
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Nro. cuenta:</label>
+              <input type="text" class="form-control form-control-sm mx-sm-2 txt-" style="width: 110px;">
+            </div>
+            <div class="form-group">
+              <label>Asignación Familiar:</label>
+              <select class="form-control form-control-sm mx-sm-3 cbo-" style="width: 128px;">
+              </select>
+            </div>
+            <div class="form-group">
+              <label>SCTR:</label>
+              <select class="form-control form-control-sm mx-sm-3 cbo-" style="width: 128px;">
+              </select>
+            </div>
+          </div>
+          <div class="form-inline pb-3">
+            <div class="form-group">
+              <label>Tipo comisión:</label>
+              <select class="form-control form-control-sm mx-sm-3 cbo-" style="width: 170px;">
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Días del mes:</label>
+               <input type="text" class="form-control form-control-sm mx-sm-2 txt-" style="width: 110px;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <fieldset style="font-size: 13px">
+            <legend>Remuneración:</legend>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Días vacaciones:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Descanso médico:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Días subsidio:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Días falta:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Días permisos:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Permisos no remunerados:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Hrs tardanza:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Hrs. extras 25%:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Hrs. extras 35%:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>TOTAL DIAS:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>SUELDO:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>SUELDO BRUTO:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Vacaciones:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Descanso médico:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Subsidio:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Faltas:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Permisos:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Bonos no afecto:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Asignación familiar:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Hrs. tardanzas:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Hrs. extras 25%:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Hrs. extras 35%:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Bonos afecto:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>TOTAL INGRESO:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                </div>
+              </div>
+          </fieldset>
+        </div>
+        <div class="col-sm-6">
+          <fieldset style="font-size: 13px">
+            <legend>Descuentos:</legend>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label>TOTAL INGRESO AFECTO:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Aporte:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Seguro:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <fieldset style="font-size: 12px;margin-top: -10px;">
+                    <legend>Comisión</legend>
+                    <div class="form-group" style="margin-bottom: 5px;">
+                      <label>Flujo:</label>
+                      <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 5px;">
+                      <label>Mixto:</label>
+                      <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                    </div>
+                    <div class="form-group">
+                      <label>Total:</label>
+                      <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                    </div>
+                  </fieldset>
+                  <div class="form-group">
+                    <label>Total AFP:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Total ONP:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Judicial:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Cuota sindical:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Otros Dsctos.:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Prestamos:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Renta 5ta.:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>TOTAL DSCTO:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>NETO A PAGAR:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                </div>
+              </div>
+          </fieldset>
+          <div class="pb-4"></div>
+          <fieldset style="font-size: 13px">
+            <legend>Aportaciones del empleador:</legend>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Días vacaciones:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Descanso médico:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Vacaciones:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                  <div class="form-group">
+                    <label>Descanso médico:</label>
+                    <input type="text" class="form-control form-control-sm mx-sm-2 txt-">
+                  </div>
+                </div>
+              </div>
+          </fieldset>
+          <div class="pt-4 text-center">
+            <button type="button" class="btn btn-outline-secondary"><i class="fa fa-print" aria-hidden="true"></i><br>Imprimir</button>
+            <button type="button" class="btn btn-outline-success"><i class="fa fa-calculator" aria-hidden="true"></i><br>Calcular</button>
+            <button type="button" class="btn btn-outline-info"><i class="fa fa-floppy-o" aria-hidden="true"></i><br>Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
