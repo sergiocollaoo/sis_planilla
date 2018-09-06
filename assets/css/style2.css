@@ -8,6 +8,10 @@ body {
     font-size: 0.9rem;
 }
 
+i{
+    margin-right: 5px;
+}
+
 p {
     font-size: 1.1em;
     font-weight: 300;
@@ -143,11 +147,11 @@ a[aria-expanded="true"] {
     background: #6d7fcc;
 } */
 
-/* #sidebarCollapse {
+#sidebarCollapse {
     cursor: pointer;
     border: none;
     vertical-align: middle;
-} */
+} 
 
 /* a[data-toggle="collapse"] {
     position: relative; 
@@ -255,6 +259,10 @@ legend {
     font-size: 1rem;
     background-color: #e0e0e0;
     margin-bottom: 0px;
+}
+
+.header-page button{
+    border: none;
 }
 
 .subheader-page{
