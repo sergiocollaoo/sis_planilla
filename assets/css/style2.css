@@ -71,7 +71,7 @@ a:focus {
 }
 
 #sidebar.active {
-    margin-left: -250px;
+    margin-left: -100px;
 }
 
 #sidebar .sidebar-header {
@@ -131,6 +131,8 @@ a:focus {
     z-index: 999;
     list-style: none;
     box-shadow: 3px 0 3px 3px rgba(0,0,0,.05);
+    overflow-y: auto;
+    transition: all .3s;
 }
 
 #sidebar ul li ul div {
@@ -141,11 +143,20 @@ a:focus {
     font-weight: bold;
     text-align: left;
 }
-/* #sidebar ul li.active>a,
-a[aria-expanded="true"] {
-    color: #fff;
+
+#sidebar ul li ul{
+    visibility: hidden;
+}
+
+#sidebar ul li a:focus ~ ul,
+#sidebar ul li:focus ul{
+    visibility: visible;
+}
+
+ul ul a {
+    font-size: 0.9em !important;
     background: #6d7fcc;
-} */
+} 
 
 #sidebarCollapse {
     cursor: pointer;
@@ -153,23 +164,23 @@ a[aria-expanded="true"] {
     vertical-align: middle;
 } 
 
+/* #sidebar ul li.active>a,
+ a[aria-expanded="true"] {
+     color: #fff;
+     background: #6d7fcc;
+ } */ 
+
 /* a[data-toggle="collapse"] {
     position: relative; 
 } */
 
-/* .dropdown-toggle::after {
+/* .sub-sidebar::after {
     display: block;
     position: absolute; 
     top: 50%;
     right: 0px;
     transform: translateY(-50%);
-} */
-
-ul ul a {
-    font-size: 0.9em !important;
-/*    padding-left: 30px !important;*/
-    background: #6d7fcc;
-} 
+}  */
 
 ul.CTAs {
     padding: 20px;
@@ -218,7 +229,7 @@ a.article:hover {
 
 @media (max-width: 768px) {
     #sidebar {
-        margin-left: -250px;
+        margin-left: -100px;
     }
     #sidebar.active {
         margin-left: 0;
@@ -227,7 +238,7 @@ a.article:hover {
         width: 100%;
     }
     #content.active {
-        width: calc(100% - 250px);
+        width: calc(100% - 100px);
     }
     #sidebarCollapse span {
         display: none;
