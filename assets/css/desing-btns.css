@@ -2,6 +2,7 @@
 
 .btn-box {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
@@ -9,9 +10,25 @@
 	width: 300px;
 	height: 300px;
 	border-radius: 150px;
+	margin-top: 15px;
+	color: #fff;
 }
 
-.btn-box-body {
-	top: 50%;
-	transform: translateY(-50%);
+.btn-box-body{
+	width: 100%;
+} 
+
+.btn-box-body i{
+	font-size: 8em;
 }
+
+.btn-box-body span{
+	font-size: 3em;
+	font-weight: bold;
+}
+
+.btn-box-footer {
+	width: 100%;
+	font-size: 1.8em;
+}
+
