@@ -1,0 +1,17 @@
+/* ESTILO DE BOTONES BY SERGIO COLLAO */
+
+.btn-box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	border: 1px solid;
+	width: 300px;
+	height: 300px;
+	border-radius: 150px;
+}
+
+.btn-box-body {
+	top: 50%;
+	transform: translateY(-50%);
+}
