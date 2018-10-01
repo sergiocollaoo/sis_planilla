@@ -136,6 +136,11 @@ $route['get_promena'] 				= 'c_producto/get_promena';
 $route['update_promena'] 			= 'c_producto/update_promena';
 $route['delete_promena'] 			= 'c_producto/delete_promena';
 /************************************************************************************************************************************************************************/
+
+
+
+$route['asistencia'] 				= 'c_control/control_asistencia';
+/************************************************************************************************************************************************************************/
 $route['ReportePlanilla'] 			= 'c_planilla/reporteplanilla';
 $route['get_inicioboletacombo'] 	= 'c_planilla/get_inicioboletacombo';
 $route['list_remuneracion'] 		= 'c_planilla/list_remuneracion';

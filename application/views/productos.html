@@ -1,23 +1,35 @@
 <div id="content">
-    <!-- Breadcrumbs-->
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="index.html"><i class="fa fa-home"></i>Inicio</a>
-      </li>
-      <li class="breadcrumb-item"><i class="fa fa-fw fa-wrench"></i>Maestros</li>
-      <li class="breadcrumb-item"><i class="fa fa-money"></i>Productos y Menajería</li>
-    </ol>
-    <nav class="navbar navbar-light bg-light">
-        <div class="navbar-nav mr-auto">
-          <span class="navbar-brand mb-0 h1">Productos y Menajería</span>
-        </div>
-        <div class="navbar-nav ml-auto">
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary" id="btn-Exportb"><i class="fa fa-cloud-download"></i>&nbsp;Exportar</button>
-            <button type="button" class="btn btn-dark" id="btn-promena" data-toggle="modal" data-target="#Modal-promena"><i class="fa fa-plus"></i>&nbsp;Agregar</button>
-          </div>
-        </div>
-    </nav><br>
+  <nav class="navbar header-page">
+    <div class="d-flex flex-row">
+      <span class="breadcrumb-item">
+        <a href="index.html"><i class="icon-home1"></i>Inicio</a>
+      </span>
+      <span class="breadcrumb-item">
+        <i class="icon-gears"></i>Maestros
+      </span>
+      <span class="breadcrumb-item">
+        <i class="icon-list-alt"></i>Productos y Menajería
+      </span>
+    </div>
+    <div class="d-flex flex-row-reverse">
+      <button type="button" class="btn btn-outline-secondary" id="sidebarCollapse">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </nav>
+
+  <nav class="navbar navbar-light bg-light subheader-page">
+    <div class="navbar-nav mr-auto">
+      <span class="navbar-brand mb-0 h1">Productos y Menajería</span>
+    </div>
+    <div class="navbar-nav ml-auto">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary" id="btn-Exportb"><i class="fa fa-cloud-download"></i>&nbsp;Exportar</button>
+        <button type="button" class="btn btn-dark" id="btn-promena" data-toggle="modal" data-target="#Modal-promena"><i class="fa fa-plus"></i>&nbsp;Agregar</button>
+      </div>
+    </div>
+  </nav>
+
     <div class="row">
       <div class="col-6">
         <h5 class="modal-title">Productos</h5><hr>
