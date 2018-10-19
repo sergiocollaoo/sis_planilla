@@ -140,6 +140,7 @@ $route['delete_promena'] 			= 'c_producto/delete_promena';
 
 
 $route['asistencia'] 				= 'c_control/control_asistencia';
+$route['list_controlasistencia'] 	= 'c_control/list_controlasistencia';
 /************************************************************************************************************************************************************************/
 $route['ReportePlanilla'] 			= 'c_planilla/reporteplanilla';
 $route['get_inicioboletacombo'] 	= 'c_planilla/get_inicioboletacombo';

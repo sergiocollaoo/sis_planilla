@@ -30,9 +30,11 @@ function fnc_list_banco()
     $.getJSON("list_banco", function (data){ 
 
     $('#tbt-banco').DataTable().row().clear().draw(false);
+
     for (var i = 0; i<data.length;i++) 
     {
-        $('#tbt-banco').DataTable().row.add([i+1,
+        $('#tbt-banco').DataTable().row.add(
+        [i+1,
         data[i].Descripcion,
         data[i].Estado == 1 ?'<span class="badge badge-pill badge-success">Activo</span>' : '<span class="badge badge-pill badge-secondary">Inactivo</span>',
         '<a class="btn btn-update-banco" data-idbanco="'+data[i].IDBanco+'" data-toggle="modal" data-target="#Modal-banco"><i class="fa fa-edit"></i></a>'+
@@ -40,6 +42,7 @@ function fnc_list_banco()
         ]).draw(false);
     }     
     });
+
 }
 /******************************************************************************************************************************************************************************/
 function fnc_insert_banco ()

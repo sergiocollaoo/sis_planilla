@@ -79,11 +79,17 @@
                       <div class="col-sm-12"><hr></div>
                       <div class="col-sm-6 pb-3">
                         <div class="form-row">
-                          <div class="col-sm-6">
+                          <div class="col-sm-2">
+                            <label class="mt-1">Tipo doc.:</label>
+                          </div>
+                          <div class="col-sm-4">
                             <select class="form-control form-control-sm cbo-tipodoc">
                             </select>
                           </div>
-                          <div class="col-sm-6">
+                          <div class="col-sm-2">
+                            <label class="mt-1">Número:</label>
+                          </div>
+                          <div class="col-sm-4">
                             <input type="text" class="form-control form-control-sm" placeholder="#" id="txt-numdoc">
                           </div>
                         </div>
@@ -198,27 +204,17 @@
               <!-- inicio -->
                 <div class="col-md-10 offset-md-1">
                   <div class="row mt-5">
-                    <div class="col-sm-6 pb-3">
-                      <div class="form-group">
-                        <label >Local:</label>
-                          <select class="form-control form-control-sm cbo-local">
-                          </select>
-                      </div>                      
+                    <div class="col-sm-12">
+                      <label >Ocupación:</label>
+                      <select class="form-control form-control-sm cbo-ocupacion">
+                      </select>
                     </div>
-                    <div class="col-sm-4 pb-3">
-                      <div class="form-group">
-                        <label >Cargo:</label>
-                          <select class="form-control form-control-sm cbo-cargo">
-                          </select>
-                      </div>
+                    <div class="col-sm-3">
+                      <label >Tipo de pago:</label>
+                      <select class="form-control form-control-sm cbo-tpago">
+                      </select>
                     </div>
-                    <div class="col-sm-2 pb-3">
-                       <div class="form-group">
-                        <br>
-                          <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#Modal-funciones"><i class="fa fa-eye"></i> Funciones</button>
-                      </div>
-                    </div>
-                    <div class="col-sm-3 pb-3 offset-md-3">
+                    <div class="col-sm-3 pb-3">
                       <label >Remuneración:</label>
                       <input type="text" class="form-control form-control-sm" id="txt-remuneracion">
                     </div>
@@ -257,7 +253,7 @@
     </div>
   <!-- Modal -->
 <div class="modal fade" id="Modal-vinculolaboral" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Vínculo Laboral</h5>
@@ -267,6 +263,26 @@
       </div>
       <div class="modal-body">
         <div class="row">
+          <div class="col-sm-6 pb-3">
+            <div class="form-group">
+              <label >Establecimiento de trabajo:</label>
+                <select class="form-control form-control-sm cbo-local">
+                </select>
+            </div>                      
+          </div>
+          <div class="col-sm-4 pb-3">
+            <div class="form-group">
+              <label >Cargo:</label>
+                <select class="form-control form-control-sm cbo-cargo">
+                </select>
+            </div>
+          </div>
+          <div class="col-sm-2 pb-3">
+             <div class="form-group">
+              <br>
+                <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#Modal-funciones"><i class="fa fa-eye"></i> Funciones</button>
+            </div>
+          </div>
           <div class="col-sm-12">
             <div class="form-group">
               <label>Tipo de Contrato:</label>
@@ -305,7 +321,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="Modal-funciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Funciones del cargo</h5>
