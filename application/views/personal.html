@@ -204,23 +204,32 @@
               <!-- inicio -->
                 <div class="col-md-10 offset-md-1">
                   <div class="row mt-5">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                       <label >Ocupación:</label>
                       <select class="form-control form-control-sm cbo-ocupacion">
                       </select>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                       <label >Tipo de pago:</label>
                       <select class="form-control form-control-sm cbo-tpago">
                       </select>
                     </div>
-                    <div class="col-sm-3 pb-3">
+                    <div class="col-sm-2 pb-3">
                       <label >Remuneración:</label>
                       <input type="text" class="form-control form-control-sm" id="txt-remuneracion">
                     </div>
-                    <div class="col-sm-3 pb-3">
+                    <div class="col-sm-2 pb-3">
                       <label for="exampleCtrl">R/C:</label>
                       <input type="text" class="form-control form-control-sm" id="txt-recargoconsumo">
+                    </div>
+                    
+                    <div class="col-sm-2 offset-md-4">
+                      <label for="exampleCtrl">Por hora:</label>
+                      <input type="text" class="form-control form-control-sm" id="txt-porhora">
+                    </div>
+                    <div class="col-sm-2">
+                      <label for="exampleCtrl">Por día:</label>
+                      <input type="text" class="form-control form-control-sm" id="txt-pordia">
                     </div>
                     <div class="col-sm-10 pb-3">
                       <table id="tbt-vinculolaboral" class="display nowrap compact" style="width:100%">
@@ -290,6 +299,14 @@
               </select>
             </div>
           </div>
+          <div class="col-sm-6 pb-3">
+            <label >Fecha inicio:</label>
+            <input type="date" class="form-control form-control-sm" id="fechai-laboral">
+          </div>
+          <div class="col-sm-6 pb-3">
+            <label >Fecha cese:</label>
+            <input type="date" class="form-control form-control-sm" id="fechac-laboral">
+          </div>
           <div class="col-sm-12 pb-3">
             <div class="form-group">
               <label>T-registro</label>
@@ -301,14 +318,6 @@
               <label>Contrato</label>
               <input type="file" class="form-control-file form-control-sm">
             </div>
-          </div>
-          <div class="col-sm-6 pb-3">
-            <label >Fecha inicio:</label>
-            <input type="date" class="form-control form-control-sm" id="fechai-laboral">
-          </div>
-          <div class="col-sm-6 pb-3">
-            <label >Fecha cese:</label>
-            <input type="date" class="form-control form-control-sm" id="fechac-laboral">
           </div>
         </div>
       </div>
