@@ -37,7 +37,7 @@ function init_personal ()
         $('#div-tbtPersonal').hide();
         $('#btn-Exportp').hide();
         $('.btn-Personal').hide();
-        $('#div-addPersonal').show();
+        $('#prev-addPersonal').show();
         $('#btn-SaveP').show();
         $('#btn-CloseP').show();
         $('#btn-update-personal').attr('data-idpersonal', '');
