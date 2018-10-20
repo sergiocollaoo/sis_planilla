@@ -219,7 +219,7 @@ function fnc_list_personal()
     for (var i = 0; i<data.length;i++) 
     {
         $('#tbt-personal').DataTable().row.add([
-        data[i].IDPersonal,
+        i+1,
         data[i].IDNumdoc,
         data[i].Apellidos,
         data[i].Nombres,
@@ -235,11 +235,11 @@ function fnc_list_personal()
 function fnc_insert_personal ()
 {
     var data={};    
-    data.ID_Numdoc              = $('#txt-numdoc').val();
+    data.ID_Numdoc              = $('#txt-numdoc_i').val();
     data.ID_Documento           = $('.cbo-tipodoc').val();
-    data.txt_apellidos          = $('#txt-apellidos').val();
-    data.txt_nombres            = $('#txt-nombres').val();
-    data.txt_fechanacimiento    = $('#txt-fechanac').val();
+    data.txt_apellidos          = $('#txt-apellidos_i').val();
+    data.txt_nombres            = $('#txt-nombres_i').val();
+/*    data.txt_fechanacimiento    = $('#txt-fechanac').val();
     data.ID_Nacionalidad        = $('.cbo-nacionalidad').val();
     data.txt_sexo               = $('input:radio[name=rd-sexo]:checked').val()
     data.txt_telefono           = $('#txt-telefono').val();
@@ -257,7 +257,7 @@ function fnc_insert_personal ()
     data.txt_remuneracion       = $('#txt-remuneracion').val();
     data.txt_recargoconsumo     = $('#txt-recargoconsumo').val();
     data.ID_Local               = $('.cbo-local').val();
-     
+     */
     $.ajax({
         type: "POST",
         url: "insert_personal",
@@ -273,13 +273,16 @@ function fnc_insert_personal ()
         {  
             alert("Guardado correctamente");
             $('#btn-update-personal').attr('data-idpersonal',resp.idpersonal);
-            $('#div-tbtPersonal').show();
-            $('#btn-Exportp').show();
-            $('.btn-Personal').show();
-            $('#div-addPersonal').hide();
+            $('#btn-update-personal').show();
+            $('#prev-addPersonal').hide();
+            $('#div-addPersonal').show();
             $('#btn-SaveP').hide();
-            $('#btn-CloseP').hide();
             fnc_list_personal();
+
+            $('#txt-numdoc').val($('#txt-numdoc_i').val());
+            $('.cbo-tipodoc').val($('.cbo-tipodoc').val());
+            $('#txt-apellidos').val($('#txt-apellidos_i').val());
+            $('#txt-nombres').val($('#txt-nombres_i').val());
         },
         complete: function () 
         {     
@@ -374,10 +377,8 @@ function fnc_update_personal()
     data.ID_Regpension          = $('.cbo-regpension').val();
     data.txt_comision           = ($('input:checkbox[name=chk-comision]:checked') ? 1 : 0);
     data.txt_cussp              = $('#txt-cuspp').val();
-    data.ID_Cargo               = $('.cbo-cargo').val();
     data.txt_remuneracion       = $('#txt-remuneracion').val();
     data.txt_recargoconsumo     = $('#txt-recargoconsumo').val();
-    data.ID_Local               = $('.cbo-local').val();
 
     $.ajax({
         type: "POST",

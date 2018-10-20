@@ -53,31 +53,33 @@
         </tbody>
       </table>
     </div>
-    <div id="prev-addPersonal">
-      <h5 class="modal-title" id="lbl-personal">Nuevo Personal</h5>
+    <div id="prev-addPersonal" style="display: none;">
+      <h5 class="modal-title">Nuevo Personal</h5>
       <div class="card-body" style="background-color: white;">
         <!-- inicio -->
-        <div class="col-md-10 offset-md-1">
-          <div class="form-row mt-4">
-            <div class="col-sm-3 pb-3">
-              <label for="exampleFirst">Apellidos</label>
-              <input type="text" class="form-control form-control-sm" id="txt-apellidos">
-            </div>
-            <div class="col-sm-3 pb-3">
-              <label for="exampleLast">Nombres</label>
-              <input type="text" class="form-control form-control-sm" id="txt-nombres">
-            </div>
-            <div class="col-sm-3 pb-3">
-              <label>Tipo de documento:</label>
-              <select class="form-control form-control-sm cbo-tipodoc">
-              </select>
-            </div>
-            <div class="col-sm-3">
-              <label>Número de documento:</label>
-              <input type="text" class="form-control form-control-sm" placeholder="#" id="txt-numdoc">
+        <form>
+          <div class="col-md-10 offset-md-1">
+            <div class="form-row mt-4">
+              <div class="col-sm-3 pb-3">
+                <label for="exampleFirst">Apellidos</label>
+                <input type="text" class="form-control form-control-sm" id="txt-apellidos_i">
+              </div>
+              <div class="col-sm-3 pb-3">
+                <label for="exampleLast">Nombres</label>
+                <input type="text" class="form-control form-control-sm" id="txt-nombres_i">
+              </div>
+              <div class="col-sm-3 pb-3">
+                <label>Tipo de documento:</label>
+                <select class="form-control form-control-sm cbo-tipodoc">
+                </select>
+              </div>
+              <div class="col-sm-3">
+                <label>Número de documento:</label>
+                <input type="text" class="form-control form-control-sm" placeholder="#" id="txt-numdoc_i">
+              </div>
             </div>
           </div>
-        </div>
+        </form>
         <!-- fin -->
       </div>      
     </div>
