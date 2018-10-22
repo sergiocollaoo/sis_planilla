@@ -43,6 +43,10 @@ function init_personal ()
         $('#btn-update-personal').attr('data-idpersonal', '');
     });
 
+    $('.span-ver').on('click', function(){
+        $('#div-ver').toggle("slow");
+    });
+
     $('#btn-CloseP').on('click', function(){
 
         $('#nav-home-tab').addClass('active');
@@ -313,6 +317,7 @@ function fnc_get_personal()
             $('#div-tbtPersonal').hide();
             $('#btn-Exportp').hide();
             $('.btn-Personal').hide();
+            $('#prev-addPersonal').hide();
             $('#div-addPersonal').show();
             $('#btn-update-personal').show();
             $('#btn-CloseP').show();
