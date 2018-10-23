@@ -291,7 +291,24 @@
                       <select class="form-control form-control-sm cbo-ocupacion">
                       </select>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-6 pb-3">
+                      <div class="form-row">
+                        <div class="col-sm-5">
+                          <label >Régimen Pensionario:</label>
+                          <select class="form-control form-control-sm cbo-regpension">
+                          </select>
+                        </div>
+                        <div class="col-sm-2 mt-4">
+                          <input type="checkbox" name="chk-comision">
+                          <label>Mixta</label>
+                        </div>
+                        <div class="col-sm-5">
+                          <label>CUSPP:</label>
+                          <input type="text" class="form-control form-control-sm" placeholder="CUSPP" id="txt-cuspp">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
                       <label >Tipo de pago:</label>
                       <select class="form-control form-control-sm cbo-tpago">
                       </select>
@@ -304,8 +321,7 @@
                       <label for="exampleCtrl">R/C:</label>
                       <input type="text" class="form-control form-control-sm" id="txt-recargoconsumo">
                     </div>
-
-                    <div class="col-sm-2 offset-md-4">
+                    <div class="col-sm-2">
                       <label for="exampleCtrl">Por hora:</label>
                       <input type="text" class="form-control form-control-sm" id="txt-porhora">
                     </div>
@@ -313,6 +329,19 @@
                       <label for="exampleCtrl">Por día:</label>
                       <input type="text" class="form-control form-control-sm" id="txt-pordia">
                     </div>
+
+                    <div class="col-sm-5 pb-3">
+                      <div class="form-row">
+                        <div class="col-sm-6">
+                          <select class="form-control form-control-sm cbo-banco">
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control form-control-sm" placeholder="# Cta." id="txt-numcta">
+                        </div>
+                      </div>
+                    </div>
+                    
                     <div class="col-sm-10 pb-3">
                       <table id="tbt-vinculolaboral" class="display nowrap compact" style="width:100%">
                         <thead>
@@ -332,32 +361,6 @@
                     </div>
                     <div class="col-sm-2 pb-3 mt-4">
                       <button type="button" class="btn btn-outline-success" id="btn-add1" data-toggle="modal"><i class="fa fa-plus"></i></button>
-                    </div>
-                    <div class="col-sm-5 pb-3">
-                      <div class="form-row">
-                        <div class="col-sm-6">
-                          <select class="form-control form-control-sm cbo-banco">
-                          </select>
-                        </div>
-                        <div class="col-sm-6">
-                          <input type="text" class="form-control form-control-sm" placeholder="# Cta." id="txt-numcta">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-7 pb-3">
-                      <div class="form-row">
-                        <div class="col-sm-5">
-                          <select class="form-control form-control-sm cbo-regpension">
-                          </select>
-                        </div>
-                        <div class="col-sm-2">
-                          <input type="checkbox" name="chk-comision">
-                          <label>Mixta</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <input type="text" class="form-control form-control-sm" placeholder="CUSPP" id="txt-cuspp">
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
