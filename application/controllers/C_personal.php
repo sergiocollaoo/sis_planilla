@@ -74,5 +74,27 @@ public function insert_vinculolaboral()
         $insert_vinculolaboral=$this->m_personal->insert_vinculolaboral($data);
         echo json_encode($insert_vinculolaboral);
     }
-/************************************************************************************************************************************************************************/ 
+/************************************************************************************************************************************************************************/
+public function get_departamento()
+    {
+        $get_departamento=$this->m_personal->get_departamento();
+        echo json_encode($get_departamento);
+    }
+/************************************************************************************************************************************************************************/
+public function get_provincia()
+    {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json,TRUE);
+        $get_provincia=$this->m_personal->get_provincia($data['id_departamento']);
+        echo json_encode($get_provincia);
+    }
+/************************************************************************************************************************************************************************/
+public function get_distrito()
+    {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json,TRUE);
+        $get_distrito=$this->m_personal->get_distrito($data['id_provincia']);
+        echo json_encode($get_distrito);
+    }
+/************************************************************************************************************************************************************************/
 }

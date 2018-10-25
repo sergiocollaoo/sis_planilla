@@ -64,6 +64,9 @@ $route['get_personal'] 				= 'c_personal/get_personal';
 $route['update_personal'] 			= 'c_personal/update_personal';
 $route['delete_personal'] 			= 'c_personal/delete_personal';
 $route['get_datoscombo'] 			= 'c_personal/get_datoscombo';
+$route['get_departamento'] 			= 'c_personal/get_departamento';
+$route['get_provincia'] 			= 'c_personal/get_provincia';
+$route['get_distrito'] 				= 'c_personal/get_distrito';
 
 $route['list_vinculolaboral'] 		= 'c_personal/list_vinculolaboral';
 $route['insert_vinculolaboral'] 	= 'c_personal/insert_vinculolaboral';

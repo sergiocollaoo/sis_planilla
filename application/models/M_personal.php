@@ -21,24 +21,6 @@ public function insert_personal($data)
     $ID_Documento       = $data['ID_Documento'];
     $v_apellidos        = $data['txt_apellidos'];
     $v_nombres          = $data['txt_nombres'];
-/*    $v_fechanacimiento  = $data['txt_fechanacimiento'];
-    $ID_Nacionalidad    = $data['ID_Nacionalidad'];
-    $v_sexo             = $data['txt_sexo'];
-    $v_telefono         = $data['txt_telefono'];
-    $v_email            = $data['txt_email'];
-    $v_emailcorp        = $data['txt_emailcorp'];
-    $v_direccion        = $data['txt_direccion'];
-    $v_referencia       = $data['txt_referencia'];
-    $ID_Estadocivil     = $data['ID_Estadocivil'];
-    $ID_Banco           = $data['ID_Banco'];
-    $v_numcuenta        = $data['txt_numcuenta'];
-    $ID_Regpension      = $data['ID_Regpension'];
-    $v_comision         = $data['txt_comision'];
-    $v_cussp            = $data['txt_cussp'];
-    $ID_Cargo           = $data['ID_Cargo'];
-    $v_remuneracion     = $data['txt_remuneracion'];
-    $v_recargoconsumo   = $data['txt_recargoconsumo'];
-    $ID_Local           = $data['ID_Local'];*/
     
     $query=$this->db->query("CALL sp_insert_personal('$ID_Numdoc', '$ID_Documento', '$v_apellidos', '$v_nombres')");
     if ($query->num_rows()>0)
@@ -76,21 +58,26 @@ public function update_personal($data)
     $v_sexo             = $data['txt_sexo'];
     $v_telefono         = $data['txt_telefono'];
     $v_email            = $data['txt_email'];
-    $v_emailcorp        = $data['txt_emailcorp'];
+    $ID_Distrito        = $data['ID_Distrito'];
+    $v_urb              = $data['txt_urb'];
+    $v_jiron            = $data['txt_jiron'];
+    $v_pasaje           = $data['txt_pasaje'];
+    $v_intofi           = $data['txt_intofi'];
     $v_direccion        = $data['txt_direccion'];
     $v_referencia       = $data['txt_referencia'];
+    $ID_Distritodni     = $data['ID_Distritodni'];
+    $v_direcciondni     = $data['txt_direcciondni'];
     $ID_Estadocivil     = $data['ID_Estadocivil'];
     $ID_Banco           = $data['ID_Banco'];
     $v_numcuenta        = $data['txt_numcuenta'];
     $ID_Regpension      = $data['ID_Regpension'];
     $v_comision         = $data['txt_comision'];
     $v_cussp            = $data['txt_cussp'];
-    $ID_Cargo           = $data['ID_Cargo'];
+    $ID_Tpago           = $data['ID_Tpago'];
     $v_remuneracion     = $data['txt_remuneracion'];
     $v_recargoconsumo   = $data['txt_recargoconsumo'];
-    $ID_Local           = $data['ID_Local'];
 
-    $query=$this->db->query("CALL sp_update_personal('$ID_Personal','$ID_Numdoc', '$ID_Documento', '$v_apellidos', '$v_nombres', '$v_fechanacimiento', '$ID_Nacionalidad', '$v_sexo', '$v_telefono', '$v_email', '$v_emailcorp', '$v_direccion', '$v_referencia', '$ID_Estadocivil', '$ID_Banco', '$v_numcuenta', '$ID_Regpension', '$v_comision', '$v_cussp', '$ID_Cargo', '$v_remuneracion', '$v_recargoconsumo', '$ID_Local')");   
+    $query=$this->db->query("CALL sp_update_personal('$ID_Personal','$ID_Numdoc', '$ID_Documento', '$v_apellidos', '$v_nombres', '$v_fechanacimiento', '$ID_Nacionalidad', '$v_sexo', '$v_telefono', '$v_email', '$ID_Distrito', '$v_urb', '$v_jiron', '$v_pasaje', '$v_intofi', '$v_direccion','$v_referencia', '$ID_Distritodni', '$v_direcciondni', '$ID_Estadocivil', '$ID_Banco', '$v_numcuenta', '$ID_Regpension', '$v_comision', '$v_cussp', '$ID_Tpago', '$v_remuneracion', '$v_recargoconsumo')");   
   }
 /************************************************************************************************************************************************************************/
 public function delete_personal($data)
@@ -136,6 +123,45 @@ public function insert_vinculolaboral($data)
     $v_fechac     = $data['txt_fechac'];
     
     $query=$this->db->query("CALL sp_insert_vinculolaboral('$ID_Personalv', '$ID_Tcontrato', '$v_fechai','$v_fechac')");   
+  }
+/************************************************************************************************************************************************************************/
+  public function get_departamento()
+  {
+    $query=$this->db->query("CALL sp_get_departamento()");
+    if ($query->num_rows()>0)
+    {
+      return $query->result();
+    }
+    else
+    {
+      return false;
+    } 
+  }
+/************************************************************************************************************************************************************************/
+ public function get_provincia($id_departamento)
+  {
+    $query=$this->db->query("CALL sp_get_provincia($id_departamento)");
+    if ($query->num_rows()>0)
+    {
+      return $query->result();
+    }
+    else
+    {
+      return false;
+    } 
+  }
+/************************************************************************************************************************************************************************/
+ public function get_distrito($id_provincia)
+  {
+    $query=$this->db->query("CALL sp_get_distrito($id_provincia)");
+    if ($query->num_rows()>0)
+    {
+      return $query->result();
+    }
+    else
+    {
+      return false;
+    } 
   }
 /************************************************************************************************************************************************************************/
 }

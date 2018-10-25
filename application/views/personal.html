@@ -184,19 +184,19 @@
                     </div> -->
                     <div class="col-sm-3">
                       <label for="exampleFirst">Urbanización:</label>
-                      <input type="text" class="form-control form-control-sm" id="txt-direccion">
+                      <input type="text" class="form-control form-control-sm" id="txt-urb">
                     </div>
                     <div class="col-sm-3">
                       <label for="exampleFirst">Jiron:</label>
-                      <input type="text" class="form-control form-control-sm" id="txt-direccion">
+                      <input type="text" class="form-control form-control-sm" id="txt-jiron">
                     </div>
                     <div class="col-sm-3">
                       <label for="exampleFirst">Pasaje:</label>
-                      <input type="text" class="form-control form-control-sm" id="txt-direccion">
+                      <input type="text" class="form-control form-control-sm" id="txt-pasaje">
                     </div>
                     <div class="col-sm-3">
                       <label for="exampleFirst">Int/Ofi.:</label>
-                      <input type="text" class="form-control form-control-sm" id="txt-direccion">
+                      <input type="text" class="form-control form-control-sm" id="txt-intofi">
                     </div>
                     <div class="col-sm-6 pb-3">
                       <label for="exampleFirst">Dirección:</label>
@@ -205,19 +205,16 @@
                     <div class="col-sm-2 pb-3">
                       <label for="exampleFirst">Departamento:</label>
                       <select class="form-control form-control-sm col-sm-12 cbo-departamento">
-                        <option>Seleccione..</option>
                       </select>
                     </div>
                     <div class="col-sm-2 pb-3">
                       <label for="exampleFirst">Provincia:</label>
                       <select class="form-control form-control-sm col-sm-12 cbo-provincia">
-                        <option>Selecciones..</option>
                       </select>
                     </div>
                     <div class="col-sm-2 pb-3">
                       <label for="exampleFirst">Distrito:</label>
                       <select class="form-control form-control-sm col-sm-12 cbo-distrito">
-                        <option>Selecciones..</option>
                       </select>
                     </div>
                     <div class="col-sm-8 offset-sm-2 pb-3">
@@ -225,46 +222,27 @@
                       <input type="text" class="form-control form-control-sm" id="txt-referencias">
                     </div>
                     <div class="col-sm-12">
-                      <label for="exampleFirst">Dirección DNI:</label>&nbsp;<span class="icon-plus span-ver"></span>  
-                    </div>
-                    <div class="row" id="div-ver" style="display: none;">
-                      <div class="col-sm-3">
-                        <label for="exampleFirst">Urbanización:</label>
-                        <input type="text" class="form-control form-control-sm" id="txt-direccion">
-                      </div>
-                      <div class="col-sm-3">
-                        <label for="exampleFirst">Jiron:</label>
-                        <input type="text" class="form-control form-control-sm" id="txt-direccion">
-                      </div>
-                      <div class="col-sm-3">
-                        <label for="exampleFirst">Pasaje:</label>
-                        <input type="text" class="form-control form-control-sm" id="txt-direccion">
-                      </div>
-                      <div class="col-sm-3">
-                        <label for="exampleFirst">Int/Ofi.:</label>
-                        <input type="text" class="form-control form-control-sm" id="txt-direccion">
-                      </div>
-                      <div class="col-sm-6 pb-3">
-                        <label for="exampleFirst">Dirección:</label>
-                        <input type="text" class="form-control form-control-sm" id="txt-direccion">
-                      </div>
-                      <div class="col-sm-2 pb-3">
-                        <label for="exampleFirst">Departamento:</label>
-                        <select class="form-control form-control-sm col-sm-12 cbo-departamento">
-                          <option>Seleccione..</option>
-                        </select>
-                      </div>
-                      <div class="col-sm-2 pb-3">
-                        <label for="exampleFirst">Provincia:</label>
-                        <select class="form-control form-control-sm col-sm-12 cbo-provincia">
-                          <option>Selecciones..</option>
-                        </select>
-                      </div>
-                      <div class="col-sm-2 pb-3">
-                        <label for="exampleFirst">Distrito:</label>
-                        <select class="form-control form-control-sm col-sm-12 cbo-distrito">
-                          <option>Selecciones..</option>
-                        </select>
+                      <label for="exampleFirst">Dirección DNI:</label>&nbsp;<span class="icon-plus span-ver"></span>
+                      <div class="row" id="div-ver" style="display: none;">
+                        <div class="col-sm-6">
+                          <label for="exampleFirst">Dirección:</label>
+                          <input type="text" class="form-control form-control-sm" id="txt-direcciondni">
+                        </div>
+                        <div class="col-sm-2">
+                          <label for="exampleFirst">Departamento:</label>
+                          <select class="form-control form-control-sm cbo-departamentodni">
+                          </select>
+                        </div>
+                        <div class="col-sm-2">
+                          <label for="exampleFirst">Provincia:</label>
+                          <select class="form-control form-control-sm col-sm-12 cbo-provinciadni">
+                          </select>
+                        </div>
+                        <div class="col-sm-2">
+                          <label for="exampleFirst">Distrito:</label>
+                          <select class="form-control form-control-sm col-sm-12 cbo-distritodni">
+                          </select>
+                        </div>
                       </div>
                     </div>
                   </div> 
@@ -313,6 +291,19 @@
                       <select class="form-control form-control-sm cbo-tpago">
                       </select>
                     </div>
+                    <div id="view-cbobanco" class="col-sm-8 pb-3" style="display: none;">
+                      <div class="form-row">
+                        <div class="col-sm-6">
+                          <label>Banco:</label>
+                          <select class="form-control form-control-sm cbo-banco">
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <label>N° de cuenta:</label>
+                          <input type="text" class="form-control form-control-sm" placeholder="# Cta." id="txt-numcta">
+                        </div>
+                      </div>
+                    </div>
                     <div class="col-sm-2 pb-3">
                       <label >Remuneración:</label>
                       <input type="text" class="form-control form-control-sm" id="txt-remuneracion">
@@ -323,25 +314,13 @@
                     </div>
                     <div class="col-sm-2">
                       <label for="exampleCtrl">Por hora:</label>
-                      <input type="text" class="form-control form-control-sm" id="txt-porhora">
+                      <input type="text" class="form-control form-control-sm" id="txt-porhora" readonly="">
                     </div>
                     <div class="col-sm-2">
                       <label for="exampleCtrl">Por día:</label>
-                      <input type="text" class="form-control form-control-sm" id="txt-pordia">
+                      <input type="text" class="form-control form-control-sm" id="txt-pordia" readonly="">
                     </div>
 
-                    <div class="col-sm-5 pb-3">
-                      <div class="form-row">
-                        <div class="col-sm-6">
-                          <select class="form-control form-control-sm cbo-banco">
-                          </select>
-                        </div>
-                        <div class="col-sm-6">
-                          <input type="text" class="form-control form-control-sm" placeholder="# Cta." id="txt-numcta">
-                        </div>
-                      </div>
-                    </div>
-                    
                     <div class="col-sm-10 pb-3">
                       <table id="tbt-vinculolaboral" class="display nowrap compact" style="width:100%">
                         <thead>
@@ -372,13 +351,52 @@
             <div class="card-header" id="headingThree">
               <h5 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  Collapsible Group Item #3
+                  INFORMACIÓN DE SEGURIDAD SOCIAL
                 </button>
               </h5>
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
               <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                <div class="row">
+                  <div class="col-sm-6 offset-sm-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <label>Regimen de Salud:</label>
+                      <span class="badge badge-secondary add-rs" data-toggle="modal" data-target=".bd-example-modal-sm">Agregar +</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-2"></div>
+                  <div class="col-sm-6 offset-sm-2">
+                      <table id="tbt-regsalud" class="display nowrap compact" style="width:100%">
+                        <thead>
+                          <tr>
+                            <th>Régimen de salud</th>
+                            <th>Fecha inicio</th>
+                            <th>Fecha Fin</th>
+                            <th>Entidad prestadora de Salud</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                      </table>
+                  </div>
+                  <div class="col-sm-2">
+                    <label>¿Aporta al SCTR?</label>
+                    <div class="form-group small mt-2">
+                      <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="radio" name="rd-sctr" id="rd-sisctr" value="1"> Si
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="radio" name="rd-sctr" id="rd-nosctr" value="0"> No
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -467,6 +485,45 @@
       </div>
       <div class="modal-body">
         <div id="txt-viewfunc" class="text-justify"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <label>Régimen de salud:</label>
+            <select class="form-control form-control-sm col-sm-12 cbo-regsalud">
+            </select>
+          </div>
+          <div class="col-sm-12">
+            <label>Fecha inicio:</label>
+            <input type="text" class="form-control form-control-sm" id="fechai-regsalud">
+          </div>
+          <div class="col-sm-12">
+            <label>Fecha fin:</label>
+            <input type="text" class="form-control form-control-sm" id="fechaf-regsalud">
+          </div>
+          <div class="col-sm-12" id="view-eps" style="display: none;">
+            <label>Entidad prestadora de salud:</label>
+            <select class="form-control form-control-sm col-sm-12 cbo-eps">
+            </select>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
