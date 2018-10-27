@@ -2,10 +2,6 @@ $(document).ready(init_personal);
 /******************************************************************************************************************************************************************************/
 function init_personal ()
 {
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    });
-
     $('#tbt-personal').DataTable({
         "language": {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
@@ -53,6 +49,54 @@ function init_personal ()
         $('#btn-update-personal').attr('data-idpersonal', '');
     });
 
+    $('#btn-CloseP').on('click', function(){
+
+        $('#collapseOne').addClass('show');
+        $('#collapseTwo').removeClass('show');
+        $('#collapseThree').removeClass('show');
+        $('#div-tbtPersonal').show();
+        $('#btn-Exportp').show();
+        $('.btn-Personal').show();
+        $('#div-addPersonal').hide();
+        $('#btn-SaveP').hide();
+        $('#btn-update-personal').hide();
+        $('#btn-CloseP').hide();
+        $('.cbo-tipodoc').val(0);
+        $('.cbo-nacionalidad').val(0);
+        $('.cbo-departamento').val(0);
+        $('.cbo-provincia').val(0);
+        $('.cbo-distrito').val(0);
+        $('.cbo-departamentodni').val(0);
+        $('.cbo-provinciadni').val(0);
+        $('.cbo-distritodni').val(0);
+        $('.cbo-estadocivil').val(0);
+        $('.cbo-banco').val(0);
+        $('.cbo-regpension').val(0);
+        $('.cbo-local').val(0);
+        $('.cbo-cargo').val(0);
+        $('.cbo-tcontrato').val(0);
+        $('.cbo-tpago').val(0);
+        $('#view-cbobanco').hide();
+        $('input[type=date]').val('');
+        $('#txt-cuspp').attr("disabled", true);
+        $('input:checkbox[name=chk-comision]').attr("disabled", true);
+        $('input:checkbox[name=chk-comision]').prop("checked", false);
+        $('input:radio[name=rd-sexo]').prop('checked', false);
+        $('input:radio[name=rd-sctr]').prop('checked', false);
+        $('#div-ver').hide();
+
+        fnc_reset_personal();
+    });
+
+    $('#add-vinculolaboral').on('click', function(){
+        $('.cbo-local').val(0);
+        $('.cbo-cargo').val(0);
+        $('.cbo-tcontrato').val(0);
+        $('input[type=date]').val('');
+        $('#txt-viewfunc').html("");
+        fnc_reset_personal();
+    });
+
     $('.span-ver').on('click', function(){
         $('#div-ver').toggle("slow");
     });
@@ -80,141 +124,6 @@ function init_personal ()
         }
     });
 
-    $('#btn-CloseP').on('click', function(){
-
-        $('#nav-home-tab').addClass('active');
-        $('#nav-profile-tab').removeClass('active');
-        $('#nav-home').addClass('show active');
-        $('#nav-profile').removeClass('show active');
-        $('#div-tbtPersonal').show();
-        $('#btn-Exportp').show();
-        $('.btn-Personal').show();
-        $('#div-addPersonal').hide();
-        $('#btn-SaveP').hide();
-        $('#btn-update-personal').hide();
-        $('#btn-CloseP').hide();
-        $('.cbo-tipodoc').val(0);
-        $('.cbo-nacionalidad').val(0);
-        $('.cbo-departamento').val(0);
-        $('.cbo-provincia').val(0);
-        $('.cbo-distrito').val(0);
-        $('.cbo-estadocivil').val(0);
-        $('.cbo-banco').val(0);
-        $('.cbo-regpension').val(0);
-        $('.cbo-local').val(0);
-        $('.cbo-cargo').val(0);
-        $('.cbo-tcontrato').val(0);
-        $('input[type=date]').val('');
-        $('input:checkbox[name=chk-comision]').prop("checked", false);
-        $('input:radio[name=rd-sexo]').prop('checked', false);
-        fnc_reset_personal();
-    });
-
-/*    $('#btn-add1').on('click', function(){
-        var r = confirm("Se guardará la información previa,¿continuar?");
-        if (r == true) {
-            if ($('#btn-update-personal').attr('data-idpersonal') != "") {
-                var data={};
-                    data.ID_Personal            = parseInt($('#btn-update-personal').attr('data-idpersonal'));
-                    data.ID_Numdoc              = $('#txt-numdoc').val();
-                    data.ID_Documento           = $('.cbo-tipodoc').val();
-                    data.txt_apellidos          = $('#txt-apellidos').val();
-                    data.txt_nombres            = $('#txt-nombres').val();
-                    data.txt_fechanacimiento    = $('#txt-fechanac').val();
-                    data.ID_Nacionalidad        = $('.cbo-nacionalidad').val();
-                    data.txt_sexo               = $('input:radio[name=rd-sexo]:checked').val()
-                    data.txt_telefono           = $('#txt-telefono').val();
-                    data.txt_email              = $('#txt-email').val();
-                    data.txt_emailcorp          = $('#txt-emailcorp').val();
-                    data.txt_direccion          = $('#txt-direccion').val();
-                    data.txt_referencia         = $('#txt-referencias').val();
-                    data.ID_Estadocivil         = $('.cbo-estadocivil').val();
-                    data.ID_Banco               = $('.cbo-banco').val();
-                    data.txt_numcuenta          = $('#txt-numcta').val();
-                    data.ID_Regpension          = $('.cbo-regpension').val();
-                    data.txt_comision           = ($('input:checkbox[name=chk-comision]:checked') ? 1 : 0);
-                    data.txt_cussp              = $('#txt-cuspp').val();
-                    data.ID_Tpago               = $('.cbo-tpago').val();
-                    data.txt_remuneracion       = $('#txt-remuneracion').val();
-                    data.txt_recargoconsumo     = $('#txt-recargoconsumo').val();
-
-                    $.ajax({
-                        type: "POST",
-                        url: "update_personal",
-                        data: JSON.stringify(data),
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        async: false,
-                        beforeSend: function () 
-                        {
-                        },
-                        success: function (resp)
-                        {  
-                            alert("Guardado correctamente");
-                            fnc_list_personal();
-                            $('#btn-SaveP').attr('disabled', true);
-                        },
-                        complete: function () 
-                        {           
-                        },
-                        error: function(resp)
-                        {
-                        }
-                    });
-            }else{
-                var data={};    
-                    data.ID_Numdoc              = $('#txt-numdoc').val();
-                    data.ID_Documento           = $('.cbo-tipodoc').val();
-                    data.txt_apellidos          = $('#txt-apellidos').val();
-                    data.txt_nombres            = $('#txt-nombres').val();
-                    data.txt_fechanacimiento    = $('#txt-fechanac').val();
-                    data.ID_Nacionalidad        = $('.cbo-nacionalidad').val();
-                    data.txt_sexo               = $('input:radio[name=rd-sexo]:checked').val()
-                    data.txt_telefono           = $('#txt-telefono').val();
-                    data.txt_email              = $('#txt-email').val();
-                    data.txt_emailcorp          = $('#txt-emailcorp').val();
-                    data.txt_direccion          = $('#txt-direccion').val();
-                    data.txt_referencia         = $('#txt-referencias').val();
-                    data.ID_Estadocivil         = $('.cbo-estadocivil').val();
-                    data.ID_Banco               = $('.cbo-banco').val();
-                    data.txt_numcuenta          = $('#txt-numcta').val();
-                    data.ID_Regpension          = $('.cbo-regpension').val();
-                    data.txt_comision           = ($('input:checkbox[name=chk-comision]:checked') ? 1 : 0);
-                    data.txt_cussp              = $('#txt-cuspp').val();
-                    data.ID_Tpago               = $('.cbo-tpago').val();
-                    data.txt_remuneracion       = $('#txt-remuneracion').val();
-                    data.txt_recargoconsumo     = $('#txt-recargoconsumo').val();
-                     
-                    $.ajax({
-                        type: "POST",
-                        url: "insert_personal",
-                        data: JSON.stringify(data),
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        async: false,
-                        beforeSend: function (resp)
-                        {
-                            
-                        },
-                        success: function (resp)
-                        {  
-                            alert("Guardado correctamente");
-                            $('#btn-update-personal').attr('data-idpersonal',resp.idpersonal);
-                            fnc_list_personal();
-                            $('#btn-SaveP').attr('disabled', true);
-                        },
-                        complete: function () 
-                        {     
-                        },
-                        error: function(resp)
-                        {
-                        }
-                    });
-            }
-            $('#Modal-vinculolaboral').modal('show');
-        }
-    })*/
-
     $('.cbo-regpension').change(function(){
         if ($(this).val() <= 1) {
             $('input:checkbox[name=chk-comision]').attr("disabled", true);
@@ -236,15 +145,19 @@ function init_personal ()
     $('#btn-update-personal').on('click',fnc_update_personal);
     $('#btn-SaveP').on('click',fnc_insert_personal);
     $('#save-vinculolaboral').on('click',fnc_insert_vinculolaboral);
-    fnc_list_personal();
-    fnc_get_datoscombo();
-
-    fnc_get_departamento();
 
     $('.cbo-departamento').on('change',fnc_get_provincia);
     $('.cbo-departamentodni').on('change',fnc_get_provinciadni);
     $('.cbo-provincia').on('change',fnc_get_distrito);
     $('.cbo-provinciadni').on('change',fnc_get_distritodni);
+
+    $(document).on('click','.btn-update-vinculolaboral', fnc_get_vinculolaboral);
+    $(document).on('click','.btn-delete-vinculolaboral', fnc_delete_vinculolaboral);
+    $('#btn-update-vinculolaboral').on('click',fnc_update_vinculolaboral);
+
+    fnc_list_personal();
+    fnc_get_datoscombo();
+    fnc_get_departamento();
 
 }
 /******************************************************************************************************************************************************************************/
@@ -367,6 +280,8 @@ function fnc_get_personal()
             $('.cbo-distritodni').val(resp.Distritodni).trigger("change");
             $('#txt-direcciondni').val(resp.Direccion_DNI);
             $('.cbo-regpension').val(resp.IDRegpension);
+            (resp.IDRegpension == 1 ? $('#txt-cuspp').attr("disabled", true) : $('#txt-cuspp').attr("disabled", false));
+            (resp.IDRegpension == 1 ? $('input:checkbox[name=chk-comision]').attr("disabled", true) : $('input:checkbox[name=chk-comision]').attr("disabled", false));
             (resp.Comision == 1 ? $('input:checkbox[name=chk-comision]').prop('checked', true) : $('input:checkbox[name=chk-comision]').prop('checked', false));
             $('#txt-cuspp').val(resp.Cuspp);
             $('.cbo-tpago').val(resp.IDTpago);
@@ -377,6 +292,12 @@ function fnc_get_personal()
             $('#txt-pordia').val(resp.Remuneracion/30);
             $('#txt-porhora').val((resp.Remuneracion/30)/8);
             (resp.Sctr == '0' ? $('#rd-nosctr').prop('checked', true) : $('#rd-sisctr').prop('checked', true));
+
+            if($('.cbo-distritodni').val() == 0 || $('#txt-direcciondni').val() == ""){
+                $('#div-ver').hide();
+            }else{
+                $('#div-ver').show();
+            }
 
             $('#btn-update-personal').attr('data-idpersonal', resp.IDPersonal);
 
@@ -571,8 +492,8 @@ function fnc_list_vinculolaboral()
                     data[i].Fechac,
                     data[i].Tregistrofile,
                     data[i].Contratofile,
-                    '<a class="btn btn-update-vinculolaboral" data-idpersonal="'+data[i].IDPersonal+'"><i class="fa fa-edit"></i></a>'+
-                    '<a class="btn btn-delete-vinculolaboral" data-idpersonal="'+data[i].IDPersonal+'"><i class="fa fa-trash"></i></a>'
+                    '<a class="btn btn-update-vinculolaboral" data-idvinculo="'+data[i].IDVinculo+'" data-toggle="modal" data-target="#Modal-vinculolaboral"><i class="fa fa-edit"></i></a>'+
+                    '<a class="btn btn-delete-vinculolaboral" data-idvinculo="'+data[i].IDVinculo+'"><i class="fa fa-trash"></i></a>'
                     ]).draw(false);
                 } 
         },
@@ -590,6 +511,8 @@ function fnc_insert_vinculolaboral()
     var data={};    
     data.ID_Personalv        = $('#btn-update-personal').attr('data-idpersonal');
     data.ID_Tcontrato        = $('.cbo-tcontrato').val();
+    data.ID_Local            = $('.cbo-local').val();
+    data.ID_Cargo            = $('.cbo-cargo').val();
     data.txt_fechai          = $('#fechai-laboral').val();
     data.txt_fechac          = $('#fechac-laboral').val();
 
@@ -619,11 +542,124 @@ function fnc_insert_vinculolaboral()
     });
 }
 /******************************************************************************************************************************************************************************/
+function fnc_get_vinculolaboral()
+{
+    var data={};
+    data.ID_Vinculo  = parseInt($(this).attr('data-idvinculo'));
+    $.ajax({
+        type: "POST",
+        url: "get_vinculolaboral",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        beforeSend: function () 
+        {
+        },
+        success: function (resp)
+        {
+            $('#lbl-vinculo').html('Editar vínculo laboral');
+            $('#btn-update-vinculolaboral').show() 
+            $('#save-vinculolaboral').hide()
+
+            $('.cbo-local').val(resp.IDLocal);
+            $('.cbo-cargo').val(resp.IDCargo);
+            $('#txt-viewfunc').html(resp.Funcion);
+            $('.cbo-tcontrato').val(resp.IDTcontrato);
+            $('#fechai-laboral').val(resp.Fechai);
+            $('#fechac-laboral').val(resp.Fechac);
+
+            $('#btn-update-vinculolaboral').attr('data-idvinculo', resp.IDVinculo);
+
+
+            fnc_list_vinculolaboral();
+
+        },
+        complete: function () 
+        {
+
+        },
+        error: function(resp)
+        {
+        }
+    });
+}
+/******************************************************************************************************************************************************************************/
+function fnc_update_vinculolaboral()
+{   
+    var data={};
+    data.ID_Vinculo           = parseInt($('#btn-update-vinculolaboral').attr('data-idvinculo'));
+    data.ID_Local             = $('.cbo-local').val();
+    data.ID_Cargo             = $('.cbo-cargo').val();
+    data.ID_Tcontrato         = $('.cbo-tcontrato').val();
+    data.txt_fechai           = $('#fechai-laboral').val();
+    data.txt_fechac           = $('#fechac-laboral').val();
+
+    $.ajax({
+        type: "POST",
+        url: "update_vinculolaboral",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        beforeSend: function () 
+        {
+        },
+        success: function (resp) 
+        {  
+            alert('Se editó correctamente');
+            $('#Modal-vinculolaboral').modal('hide');
+            fnc_list_vinculolaboral();
+        },
+        complete: function () 
+        {           
+        },
+        error: function(resp)
+        {
+        }
+    });
+}
+/******************************************************************************************************************************************************************************/
+function fnc_delete_vinculolaboral()
+{
+    var r = confirm("¿Desea eliminar la siguiente entrega?");
+    if (r == true) {
+    var data={}; 
+    data.ID_Vinculo  = parseInt($(this).attr('data-idvinculo'));
+
+        $.ajax({
+            type: "POST",
+            url: "delete_vinculolaboral",
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            beforeSend: function () 
+            {
+            },
+            success: function (resp) 
+            {  
+               fnc_list_vinculolaboral();
+
+            },
+            complete: function () 
+            {    
+                
+            },
+            error: function(resp)
+            {
+            }
+        });
+         alert('Se eliminó correctamente');
+    }
+}
+
+/******************************************************************************************************************************************************************************/
 function fnc_get_departamento()
 {
    $.getJSON("get_departamento", function (data){ 
         $('.cbo-departamento').html('<option value="0">Seleccione...</option>');
-        $('.cbo-departamentodni').html('<option value="0">Seleccione 2...</option>');
+        $('.cbo-departamentodni').html('<option value="0">Seleccione...</option>');
         for (var i = 0; i<data.length;i++) 
         {
             $('.cbo-departamento').append('<option value="'+data[i].idDepartamento+'">'+data[i].departamento+'</option>');

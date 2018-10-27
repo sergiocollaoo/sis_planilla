@@ -119,10 +119,44 @@ public function insert_vinculolaboral($data)
   {
     $ID_Personalv = $data['ID_Personalv'];
     $ID_Tcontrato = $data['ID_Tcontrato'];
+    $ID_Local     = $data['ID_Local'];
+    $ID_Cargo     = $data['ID_Cargo'];
     $v_fechai     = $data['txt_fechai'];
     $v_fechac     = $data['txt_fechac'];
     
-    $query=$this->db->query("CALL sp_insert_vinculolaboral('$ID_Personalv', '$ID_Tcontrato', '$v_fechai','$v_fechac')");   
+    $query=$this->db->query("CALL sp_insert_vinculolaboral('$ID_Personalv', '$ID_Tcontrato', '$ID_Local', '$ID_Cargo', '$v_fechai','$v_fechac')");   
+  }
+/************************************************************************************************************************************************************************/
+public function get_vinculolaboral($ID_Vinculo)
+  {
+    $query=$this->db->query("CALL sp_get_vinculolaboral($ID_Vinculo)");
+    if ($query->num_rows()==1)
+    {
+      return $query->row();
+    }
+    else
+    {
+      return false;
+    } 
+  }
+/************************************************************************************************************************************************************************/
+public function update_vinculolaboral($data)
+  {
+    $ID_Vinculo   = $data['ID_Vinculo'];
+    $ID_Local     = $data['ID_Local'];
+    $ID_Cargo     = $data['ID_Cargo'];
+    $ID_Tcontrato = $data['ID_Tcontrato'];
+    $v_fechai     = $data['txt_fechai'];
+    $v_fechac     = $data['txt_fechac'];
+
+    $query=$this->db->query("CALL sp_update_vinculolaboral($ID_Vinculo, '$ID_Local', '$ID_Cargo', '$ID_Tcontrato', '$v_fechai','$v_fechac')");   
+  }
+/************************************************************************************************************************************************************************/
+public function delete_vinculolaboral($data)
+  {
+    $ID_Vinculo    = $data['ID_Vinculo'];       
+
+    $query=$this->db->query("CALL sp_delete_vinculolaboral($ID_Vinculo)");
   }
 /************************************************************************************************************************************************************************/
   public function get_departamento()

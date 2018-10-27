@@ -70,9 +70,9 @@ $route['get_distrito'] 				= 'c_personal/get_distrito';
 
 $route['list_vinculolaboral'] 		= 'c_personal/list_vinculolaboral';
 $route['insert_vinculolaboral'] 	= 'c_personal/insert_vinculolaboral';
-/*$route['get_vinculolaboral'] 		= 'c_personal/get_vinculolaboral';
+$route['get_vinculolaboral'] 		= 'c_personal/get_vinculolaboral';
 $route['update_vinculolaboral'] 	= 'c_personal/update_vinculolaboral';
-$route['delete_vinculolaboral'] 	= 'c_personal/delete_vinculolaboral';*/
+$route['delete_vinculolaboral'] 	= 'c_personal/delete_vinculolaboral';
 /************************************************************************************************************************************************************************/
 $route['DocumentoIdentidad'] 		= 'c_tipoid/tipoid';
 $route['list_tipodocumento'] 		= 'c_tipoid/list_tipodocumento';

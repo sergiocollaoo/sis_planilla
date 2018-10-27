@@ -75,6 +75,30 @@ public function insert_vinculolaboral()
         echo json_encode($insert_vinculolaboral);
     }
 /************************************************************************************************************************************************************************/
+public function get_vinculolaboral()
+    {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json,TRUE);
+        $get_vinculolaboral=$this->m_personal->get_vinculolaboral($data['ID_Vinculo']);
+        echo json_encode($get_vinculolaboral);
+    }
+/************************************************************************************************************************************************************************/
+public function update_vinculolaboral()
+    {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json,TRUE);
+        $update_vinculolaboral=$this->m_personal->update_vinculolaboral($data);
+        echo json_encode($update_vinculolaboral);
+    }
+/************************************************************************************************************************************************************************/
+public function delete_vinculolaboral()
+    {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json,TRUE);
+        $delete_vinculolaboral=$this->m_personal->delete_vinculolaboral($data);
+        echo json_encode($delete_vinculolaboral);
+    }
+/************************************************************************************************************************************************************************/
 public function get_departamento()
     {
         $get_departamento=$this->m_personal->get_departamento();
