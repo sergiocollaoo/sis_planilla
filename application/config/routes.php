@@ -73,6 +73,12 @@ $route['insert_vinculolaboral'] 	= 'c_personal/insert_vinculolaboral';
 $route['get_vinculolaboral'] 		= 'c_personal/get_vinculolaboral';
 $route['update_vinculolaboral'] 	= 'c_personal/update_vinculolaboral';
 $route['delete_vinculolaboral'] 	= 'c_personal/delete_vinculolaboral';
+
+$route['list_vinculoseguro'] 		= 'c_personal/list_vinculoseguro';
+$route['insert_vinculoseguro'] 		= 'c_personal/insert_vinculoseguro';
+$route['get_vinculoseguro'] 		= 'c_personal/get_vinculoseguro';
+$route['update_vinculoseguro'] 		= 'c_personal/update_vinculoseguro';
+$route['delete_vinculoseguro'] 		= 'c_personal/delete_vinculoseguro';
 /************************************************************************************************************************************************************************/
 $route['DocumentoIdentidad'] 		= 'c_tipoid/tipoid';
 $route['list_tipodocumento'] 		= 'c_tipoid/list_tipodocumento';

@@ -18,7 +18,7 @@ function init_personal ()
         }
     });
 
-    $('#tbt-regsalud').DataTable({
+    $('#tbt-vinculoseguro').DataTable({
         "paging":   false,
         "ordering": false,
         "info":     false,
@@ -88,6 +88,14 @@ function init_personal ()
         fnc_reset_personal();
     });
 
+    $('.add-rs').on('click',function(){
+        $('#lbl-seguro').html('Agregar');
+        $('.cbo-regsalud').val(0);
+        $('.cbo-eps').val(0);
+        $('input[type=date]').val('');
+        $('#view-eps').hide();
+    });
+
     $('#add-vinculolaboral').on('click', function(){
         $('.cbo-local').val(0);
         $('.cbo-cargo').val(0);
@@ -121,6 +129,7 @@ function init_personal ()
             $('#view-eps').show('slow');
         }else{
             $('#view-eps').hide('slow');
+            $('.cbo-eps').val(0);
         }
     });
 
@@ -143,17 +152,23 @@ function init_personal ()
     $(document).on('click','.btn-update-personal', fnc_get_personal);
     $(document).on('click','.btn-delete-personal', fnc_delete_personal);
     $('#btn-update-personal').on('click',fnc_update_personal);
+    $('#btn-update-personal').on('click',fnc_update_vinculoseguro);
     $('#btn-SaveP').on('click',fnc_insert_personal);
-    $('#save-vinculolaboral').on('click',fnc_insert_vinculolaboral);
 
     $('.cbo-departamento').on('change',fnc_get_provincia);
     $('.cbo-departamentodni').on('change',fnc_get_provinciadni);
     $('.cbo-provincia').on('change',fnc_get_distrito);
     $('.cbo-provinciadni').on('change',fnc_get_distritodni);
 
+    $('#save-vinculolaboral').on('click',fnc_insert_vinculolaboral);
     $(document).on('click','.btn-update-vinculolaboral', fnc_get_vinculolaboral);
     $(document).on('click','.btn-delete-vinculolaboral', fnc_delete_vinculolaboral);
     $('#btn-update-vinculolaboral').on('click',fnc_update_vinculolaboral);
+
+    $('#save-vinculoseguro').on('click',fnc_insert_vinculoseguro);
+    $(document).on('click','.btn-update-vinculoseguro', fnc_get_vinculoseguro);
+    $(document).on('click','.btn-delete-vinculoseguro', fnc_delete_vinculoseguro);
+    $('#btn-update-vinculoseguro').on('click',fnc_update_vinculoseguro);
 
     fnc_list_personal();
     fnc_get_datoscombo();
@@ -302,6 +317,7 @@ function fnc_get_personal()
             $('#btn-update-personal').attr('data-idpersonal', resp.IDPersonal);
 
             fnc_list_vinculolaboral();
+            fnc_list_vinculoseguro();
 
         },
         complete: function () 
@@ -653,7 +669,6 @@ function fnc_delete_vinculolaboral()
          alert('Se eliminó correctamente');
     }
 }
-
 /******************************************************************************************************************************************************************************/
 function fnc_get_departamento()
 {
@@ -805,3 +820,188 @@ function fnc_get_distritodni()
         }
     });
 }
+/******************************************************************************************************************************************************************************/
+function fnc_list_vinculoseguro()
+{
+    var data={};
+    data.ID_Personal      = parseInt($('#btn-update-personal').attr('data-idpersonal'));
+
+    $.ajax({
+        type: "POST",
+        url: "list_vinculoseguro",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        beforeSend: function ()
+        { 
+            $('#tbt-vinculoseguro').DataTable().row().clear().draw(false);
+        },
+        success: function (data) 
+        {
+            for (var i = 0; i<data.length;i++) 
+                {
+                    $('#tbt-vinculoseguro').DataTable().row.add([
+                    data[i].Regsalud,
+                    data[i].Fechai,
+                    data[i].Fechac,
+                    data[i].EPS,
+                    '<a class="btn btn-update-vinculoseguro" data-idseguro="'+data[i].IDSeguro+'" data-toggle="modal" data-target="#Modal-vinculoseguro"><i class="fa fa-edit"></i></a>'+
+                    '<a class="btn btn-delete-vinculoseguro" data-idseguro="'+data[i].IDSeguro+'"><i class="fa fa-trash"></i></a>'
+                    ]).draw(false);
+                } 
+        },
+        complete: function () 
+        {
+        },
+        error: function(data)
+        {
+        }
+    });
+}
+/******************************************************************************************************************************************************************************/
+function fnc_insert_vinculoseguro()
+{
+    var data={};    
+    data.ID_Personalv   = $('#btn-update-personal').attr('data-idpersonal');
+    data.ID_Regsalud    = $('.cbo-regsalud').val();
+    data.txt_fechai     = $('#fechai-regsalud').val();
+    data.txt_fechac     = $('#fechac-regsalud').val();
+    data.ID_Eps         = $('.cbo-eps').val();
+
+    $.ajax({
+        type: "POST",
+        url: "insert_vinculoseguro",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        beforeSend: function (resp)
+        {
+            
+        },
+        success: function (resp)
+        {  
+            alert("Guardado correctamente");
+            $('#Modal-vinculoseguro').modal('hide');
+            fnc_list_vinculoseguro();
+        },
+        complete: function () 
+        {     
+        },
+        error: function(resp)
+        {
+        }
+    });
+}
+/******************************************************************************************************************************************************************************/
+function fnc_get_vinculoseguro()
+{
+    var data={};
+    data.ID_Seguro  = parseInt($(this).attr('data-idseguro'));
+    $.ajax({
+        type: "POST",
+        url: "get_vinculoseguro",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        beforeSend: function () 
+        {
+        },
+        success: function (resp)
+        {
+            $('#lbl-seguro').html('Editar');
+            $('#btn-update-vinculoseguro').show() 
+            $('#save-vinculoseguro').hide()
+
+            $('.cbo-regsalud').val(resp.IDRegsalud);
+            $('#fechai-regsalud').val(resp.Fechai);
+            $('#fechac-regsalud').val(resp.Fechac);
+            $('.cbo-eps').val(resp.IDEps);
+            (resp.IDRegsalud == 2 || resp.IDRegsalud == 4 ?  $('#view-eps').show() : $('#view-eps').hide());
+
+            $('#btn-update-vinculoseguro').attr('data-idseguro', resp.IDSeguro);
+
+
+            fnc_list_vinculoseguro();
+
+        },
+        complete: function () 
+        {
+
+        },
+        error: function(resp)
+        {
+        }
+    });
+}
+/******************************************************************************************************************************************************************************/
+function fnc_update_vinculoseguro()
+{   
+    var data={};
+    data.ID_Seguro      = parseInt($('#btn-update-vinculoseguro').attr('data-idseguro'));
+    data.ID_Regsalud    = $('.cbo-regsalud').val();
+    data.txt_fechai     = $('#fechai-regsalud').val();
+    data.txt_fechac     = $('#fechac-regsalud').val();
+    data.ID_Eps         = $('.cbo-eps').val();
+
+    $.ajax({
+        type: "POST",
+        url: "update_vinculoseguro",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        beforeSend: function () 
+        {
+        },
+        success: function (resp) 
+        {  
+            alert('Se editó correctamente');
+            $('#Modal-vinculoseguro').modal('hide');
+            fnc_list_vinculoseguro();
+        },
+        complete: function () 
+        {           
+        },
+        error: function(resp)
+        {
+        }
+    });
+}
+/******************************************************************************************************************************************************************************/
+function fnc_delete_vinculoseguro()
+{
+    var r = confirm("¿Desea eliminar la siguiente entrega?");
+    if (r == true) {
+    var data={}; 
+    data.ID_Seguro  = parseInt($(this).attr('data-idseguro'));
+
+        $.ajax({
+            type: "POST",
+            url: "delete_vinculoseguro",
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            beforeSend: function () 
+            {
+            },
+            success: function (resp) 
+            {  
+               fnc_list_vinculoseguro();
+
+            },
+            complete: function () 
+            {    
+                
+            },
+            error: function(resp)
+            {
+            }
+        });
+         alert('Se eliminó correctamente');
+    }
+}
+/******************************************************************************************************************************************************************************/

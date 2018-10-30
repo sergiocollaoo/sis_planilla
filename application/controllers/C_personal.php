@@ -121,4 +121,44 @@ public function get_distrito()
         echo json_encode($get_distrito);
     }
 /************************************************************************************************************************************************************************/
+public function list_vinculoseguro()
+    {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json,TRUE);
+        $list_vinculoseguro=$this->m_personal->list_vinculoseguro($data);
+        echo json_encode($list_vinculoseguro);
+    }
+/************************************************************************************************************************************************************************/    
+public function insert_vinculoseguro()
+    {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json,TRUE);
+        $insert_vinculoseguro=$this->m_personal->insert_vinculoseguro($data);
+        echo json_encode($insert_vinculoseguro);
+    }
+/************************************************************************************************************************************************************************/
+public function get_vinculoseguro()
+    {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json,TRUE);
+        $get_vinculoseguro=$this->m_personal->get_vinculoseguro($data['ID_Seguro']);
+        echo json_encode($get_vinculoseguro);
+    }
+/************************************************************************************************************************************************************************/
+public function update_vinculoseguro()
+    {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json,TRUE);
+        $update_vinculoseguro=$this->m_personal->update_vinculoseguro($data);
+        echo json_encode($update_vinculoseguro);
+    }
+/************************************************************************************************************************************************************************/
+public function delete_vinculoseguro()
+    {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json,TRUE);
+        $delete_vinculoseguro=$this->m_personal->delete_vinculoseguro($data);
+        echo json_encode($delete_vinculoseguro);
+    }
+/************************************************************************************************************************************************************************/
 }

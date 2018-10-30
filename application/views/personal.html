@@ -358,21 +358,21 @@
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
               <div class="card-body">
                 <div class="row">
-                  <div class="col-sm-6 offset-sm-2">
+                  <div class="col-sm-8 offset-sm-1">
                     <div class="d-flex justify-content-between align-items-center">
                       <label>Regimen de Salud:</label>
-                      <span class="badge badge-secondary add-rs" data-toggle="modal" data-target=".bd-example-modal-sm">Agregar +</span>
+                      <span class="badge badge-secondary add-rs" data-toggle="modal" data-target="#Modal-vinculoseguro">Agregar +</span>
                     </div>
                   </div>
                   <div class="col-sm-2"></div>
-                  <div class="col-sm-6 offset-sm-2">
-                      <table id="tbt-regsalud" class="display nowrap compact" style="width:100%">
+                  <div class="col-sm-8 offset-sm-1">
+                      <table id="tbt-vinculoseguro" class="display nowrap compact table-bordered" style="width:100%;font-size: 0.8em;">
                         <thead>
-                          <tr>
+                          <tr class="text-center">
                             <th>Régimen de salud</th>
                             <th>Fecha inicio</th>
                             <th>Fecha Fin</th>
-                            <th>Entidad prestadora de Salud</th>
+                            <th>EPS</th>
                             <th></th>
                           </tr>
                         </thead>
@@ -495,11 +495,11 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade" id="Modal-vinculoseguro" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
+        <h5 class="modal-title" id="lbl-seguro">Agregar</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -513,11 +513,11 @@
           </div>
           <div class="col-sm-12">
             <label>Fecha inicio:</label>
-            <input type="text" class="form-control form-control-sm" id="fechai-regsalud">
+            <input type="date" class="form-control form-control-sm" id="fechai-regsalud">
           </div>
           <div class="col-sm-12">
             <label>Fecha fin:</label>
-            <input type="text" class="form-control form-control-sm" id="fechaf-regsalud">
+            <input type="date" class="form-control form-control-sm" id="fechac-regsalud">
           </div>
           <div class="col-sm-12" id="view-eps" style="display: none;">
             <label>Entidad prestadora de salud:</label>
@@ -527,7 +527,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-info" id="save-vinculoseguro">Guardar</button>
+        <button type="button" class="btn btn-primary" id="btn-update-vinculoseguro" data-idseguro="" style="display: none;">Guardar</button>
       </div>
     </div>
   </div>

@@ -198,4 +198,61 @@ public function delete_vinculolaboral($data)
     } 
   }
 /************************************************************************************************************************************************************************/
+public function list_vinculoseguro($data)
+  {
+      $v_idpersonal  = $data['ID_Personal'];
+
+      $query=$this->db->query("CALL sp_list_vinculoseguro($v_idpersonal)");
+      if ($query->num_rows()>0)
+      {
+          return $query->result();
+      }
+      else
+      {
+          return false;
+      }  
+  }
+/************************************************************************************************************************************************************************/
+public function insert_vinculoseguro($data)
+  {
+    $ID_Personalv = $data['ID_Personalv'];
+    $ID_Regsalud  = $data['ID_Regsalud'];
+    $v_fechai     = $data['txt_fechai'];
+    $v_fechac     = $data['txt_fechac'];
+    $ID_Eps       = $data['ID_Eps'];
+    
+    $query=$this->db->query("CALL sp_insert_vinculoseguro('$ID_Personalv', '$ID_Regsalud', '$v_fechai','$v_fechac', '$ID_Eps')");   
+  }
+/************************************************************************************************************************************************************************/
+public function get_vinculoseguro($ID_Seguro)
+  {
+    $query=$this->db->query("CALL sp_get_vinculoseguro($ID_Seguro)");
+    if ($query->num_rows()==1)
+    {
+      return $query->row();
+    }
+    else
+    {
+      return false;
+    } 
+  }
+/************************************************************************************************************************************************************************/
+public function update_vinculoseguro($data)
+  {
+    $ID_Seguro    = $data['ID_Seguro'];
+    $ID_Regsalud  = $data['ID_Regsalud'];
+    $v_fechai     = $data['txt_fechai'];
+    $v_fechac     = $data['txt_fechac'];
+    $ID_Eps       = $data['ID_Eps'];
+
+    $query=$this->db->query("CALL sp_update_vinculoseguro('$ID_Seguro', '$ID_Regsalud', '$v_fechai','$v_fechac', '$ID_Eps')");   
+  }
+/************************************************************************************************************************************************************************/
+public function delete_vinculoseguro($data)
+  {
+    $ID_Seguro    = $data['ID_Seguro'];       
+
+    $query=$this->db->query("CALL sp_delete_vinculoseguro($ID_Seguro)");
+  }
+/******************************************************************************************************************************************************************************/
 }
