@@ -2,42 +2,54 @@ $(document).ready(init_plame);
 /******************************************************************************************************************************************************************************/
 function init_plame()
 {
-    $('#tbt-ingresop').DataTable({
+    $('#tbt-plame').DataTable({
         "paging":   false,
         "ordering": false,
         "info":     false,
         "searching": false,
-        scrollY: '43vh',
-        scrollCollapse: true,
+        "columnDefs": [
+        { "width": "10%", "targets": 0 },
+        { "width": "10%", "className": "text-center", "targets": 2 }
+        ],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
         }
     });
 
-    $('#tbt-descuentop').DataTable({
+    $('#tbt-plamedetallec').DataTable({
         "paging":   false,
         "ordering": false,
         "info":     false,
         "searching": false,
-        scrollY: '43vh',
-        scrollCollapse: true,
         "language": {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
         }
     });
 
-    $('#btn-conceptop').on('click', fnc_reset_modalb)
+    $('#tbt-plamedetalle').DataTable({
+        "paging":   false,
+        "ordering": false,
+        "info":     false,
+        "searching": false,
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        }
+    });
+
+    $('#close-plame').on('click', function(){
+        $('#plame-div2').hide();
+        $('#plame-div1').show();
+    });
+
+/*    $('#btn-conceptop').on('click', fnc_reset_modalb)
     $('#btn-insert-conceptosp').on('click',fnc_insert_plame);
     $('#btn-update-conceptosp').on('click',fnc_update_plame);
-    $(document).on('click','.btn-update-plamei', fnc_get_plame);
-    $(document).on('click','.btn-delete-plamei', fnc_delete_plame);
-    $(document).on('click','.btn-update-plamed', fnc_get_plame);
-    $(document).on('click','.btn-delete-plamed', fnc_delete_plame);
-    fnc_list_plamei();
-    fnc_list_plamed();
+    $(document).on('click','.btn-update-plame', fnc_get_plame);*/
+    $(document).on('click','.btn-detalle-plame', fnc_get_plame);
+    fnc_list_plame();
 }
 /******************************************************************************************************************************************************************************/
-function fnc_reset_modalb()
+/*function fnc_reset_modalb()
 {
     $('#lbl-plame').html('Agregar Concepto Plame');
     $('#btn-update-conceptosp').hide() 
@@ -45,43 +57,75 @@ function fnc_reset_modalb()
     $('#btn-update-conceptosp').attr('data-idplame', '');
     $('input:radio[name=rd-plame]').prop('checked', false);
     fnc_limpiar_campos();
-}
+}*/
 /******************************************************************************************************************************************************************************/
-function fnc_list_plamei()
+function fnc_list_plame()
 {
-    $.getJSON("list_plamei", function (data){ 
+    $.getJSON("list_plame", function (data){ 
 
-    $('#tbt-ingresop').DataTable().row().clear().draw(false);
+    $('#tbt-plame').DataTable().row().clear().draw(false);
     for (var i = 0; i<data.length;i++) 
     {
-        $('#tbt-ingresop').DataTable().row.add([
+        $('#tbt-plame').DataTable().row.add([
         data[i].IDConceptos,
         data[i].Descripcion,
-        '<a class="btn btn-update-plamei" data-idplame="'+data[i].IDConceptos+'" data-toggle="modal" data-target="#Modal-plame"><i class="fa fa-edit"></i></a>'+
-        '<a class="btn btn-delete-plamei" data-idplame="'+data[i].IDConceptos+'"><i class="fa fa-trash"></i></a>'
+        '<a class="btn btn-detalle-plame" data-idplame="'+data[i].IDConceptos+'"><i class="icon-search"></i></a>'
         ]).draw(false);
     }     
     });
 }
 /******************************************************************************************************************************************************************************/
-function fnc_list_plamed()
+function fnc_get_plame()
 {
-    $.getJSON("list_plamed", function (data){ 
+    var data={};
+    data.ID_Concepto  = $(this).attr('data-idplame');
+    $.ajax({
+        type: "POST",
+        url: "get_plame",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        beforeSend: function () 
+        {
+            $('#tbt-plamedetallec').DataTable().row().clear().draw(false);
+            $('#tbt-plamedetalle').DataTable().row().clear().draw(false);
+        },
+        success: function (data) 
+        {
+            $('#plame-div1').hide();
+            $('#plame-div2').show();
 
-    $('#tbt-descuentop').DataTable().row().clear().draw(false);
-    for (var i = 0; i<data.length;i++) 
-    {
-        $('#tbt-descuentop').DataTable().row.add([
-        data[i].IDConceptos,
-        data[i].Descripcion,
-        '<a class="btn btn-update-plamed" data-idplame="'+data[i].IDConceptos+'" data-toggle="modal" data-target="#Modal-plame"><i class="fa fa-edit"></i></a>'+
-        '<a class="btn btn-delete-plamed" data-idplame="'+data[i].IDConceptos+'"><i class="fa fa-trash"></i></a>'
-        ]).draw(false);
-    }     
+            $('#lbl-plame').html('Seleccionar Concepto Plame');
+            for (var i = 0; i<data.length;i++) 
+            {
+                if(data[i].Tipo == 1){
+                    $('#tbt-plamedetallec').DataTable().row.add([
+                    data[i].Conceptoplame,
+                    data[i].Descripcion
+                    ]).draw(false);    
+                }else if (data[i].Tipo == 2){
+                    $('#tbt-plamedetalle').DataTable().row.add([
+                    data[i].Conceptoplame,
+                    data[i].Descripcion,
+                    '<a class="btn btn-update-plame" data-idplame="'+data[i].Estado+'"><i class="icon-search"></i></a>',
+                    '<a class="btn btn-update-plame" data-idplame="'+data[i].Estado+'"><i class="icon-search"></i></a>'
+                    ]).draw(false);
+                }
+            } 
+
+        },
+        complete: function () 
+        {
+            
+        },
+        error: function(resp)
+        {
+        }
     });
 }
 /******************************************************************************************************************************************************************************/
-function fnc_insert_plame ()
+/*function fnc_insert_plame ()
 {
     var data={};    
     data.ID_Concepto        = $('#txt-codigoplame').val();
@@ -103,8 +147,7 @@ function fnc_insert_plame ()
         {  
             alert("Guardado correctamente");
             $('#Modal-plame').modal('hide');
-            fnc_list_plamei();
-            fnc_list_plamed();
+            fnc_list_plame();
         },
         complete: function () 
         {     
@@ -113,43 +156,10 @@ function fnc_insert_plame ()
         {
         }
     });
-}
-/******************************************************************************************************************************************************************************/
-function fnc_get_plame()
-{
-    var data={};
-    data.ID_Concepto  = $(this).attr('data-idplame');
-    $.ajax({
-        type: "POST",
-        url: "get_plame",
-        data: JSON.stringify(data),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        async: false,
-        beforeSend: function () 
-        {
-        },
-        success: function (resp) 
-        {
-            $('#lbl-plame').html('Editar Concepto Plame');
-            $('#btn-update-conceptosp').show() 
-            $('#btn-insert-conceptosp').hide() 
-            $('#txt-codigoplame').val(resp.IDConceptos);
-            $('#txt-plamedesc').val(resp.Descripcion);
-            (resp.Categoria == 'I' ? $('#rd-ingresop').prop('checked', true) : $('#rd-descuentop').prop('checked', true));
-            $('#btn-update-conceptosp').attr('data-idplame', resp.IDConceptos);
-        },
-        complete: function () 
-        {
-            
-        },
-        error: function(resp)
-        {
-        }
-    });
-}
+}*/
+
 /***********************************************************************************************************************************************************/
-function fnc_update_plame()
+/*function fnc_update_plame()
 {   
     var data={};
     data.ID_Concepto        = $('#btn-update-conceptosp').attr('data-idplame');
@@ -170,8 +180,7 @@ function fnc_update_plame()
         {  
             alert('Se editó correctamente');
             $('#Modal-plame').modal('hide');
-            fnc_list_plamei();
-            fnc_list_plamed();
+            fnc_list_plame();
         },
         complete: function () 
         {           
@@ -180,9 +189,9 @@ function fnc_update_plame()
         {
         }
     });
-}
+}*/
 /******************************************************************************************************************************************************************************/
-function fnc_delete_plame()
+/*function fnc_delete_plame()
 {
     var r = confirm("¿Desea eliminar la siguiente entrega?");
     if (r == true) {
@@ -201,8 +210,7 @@ function fnc_delete_plame()
             },
             success: function (resp) 
             {  
-               fnc_list_plamei();
-               fnc_list_plamed();
+               fnc_list_plame();
 
             },
             complete: function () 
@@ -216,7 +224,7 @@ function fnc_delete_plame()
          alert('Se eliminó correctamente');
     }
 }
-
+*/
 
 
 /*FUNCION CON CONFIRMACION MODAL*/

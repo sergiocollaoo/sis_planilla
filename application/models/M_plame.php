@@ -2,9 +2,9 @@
 
 class M_plame extends CI_Model {
 /******************************************************************************************************************************************************************************/
-public function list_plamei()
+public function list_plame()
   {
-    $query=$this->db->query("CALL sp_list_conceptosplamei()");
+    $query=$this->db->query("CALL sp_list_conceptosplame()");
     if ($query->num_rows()>0)
     {
       return $query->result();
@@ -14,17 +14,18 @@ public function list_plamei()
       return false;
     } 
   }
-/******************************************************************************************************************************************************************************/
-public function list_plamed()
+/************************************************************************************************************************************************************************/
+public function get_plame($data)
   {
-    $query=$this->db->query("CALL sp_list_conceptosplamed()");
+    $ID_Concepto  = $data['ID_Concepto'];
+    $query=$this->db->query("CALL sp_get_conceptosplame('$ID_Concepto')");
     if ($query->num_rows()>0)
     {
       return $query->result();
     }
     else
-    {
-      return false;
+    { 
+      return false; 
     } 
   }
 /******************************************************************************************************************************************************************************/
@@ -35,19 +36,6 @@ public function insert_plame($data)
     $v_categoria        = $data['txt_categoria'];
     
     $query=$this->db->query("CALL sp_insert_conceptosplame('$ID_Concepto','$v_descripcion', '$v_categoria')");   
-  }
-/************************************************************************************************************************************************************************/
-public function get_plame($ID_Concepto)
-  {
-    $query=$this->db->query("CALL sp_get_conceptosplame('$ID_Concepto')");
-    if ($query->num_rows()==1)
-    {
-      return $query->row();
-    }
-    else
-    { 
-      return false; 
-    } 
   }
 /************************************************************************************************************************************************************************/
 public function update_plame($data)
