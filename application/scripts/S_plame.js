@@ -31,6 +31,17 @@ function init_plame()
         "ordering": false,
         "info":     false,
         "searching": false,
+        "autoWidth": false,
+        "fixedHeader": {
+            "header": false,
+            "footer": false
+        },
+        "columnDefs": [
+            { "width": "10%","targets": 0 },
+            { "width": "70%","targets": 1 },
+            { "width": "10%", "className": "text-center", "targets": 2 },
+            { "width": "10%", "className": "text-center", "targets": 3 }
+        ],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
         }
@@ -39,14 +50,19 @@ function init_plame()
     $('#close-plame').on('click', function(){
         $('#plame-div2').hide();
         $('#plame-div1').show();
+        $('#btn-saveplame').hide();
     });
 
 /*    $('#btn-conceptop').on('click', fnc_reset_modalb)
-    $('#btn-insert-conceptosp').on('click',fnc_insert_plame);
+    
     $('#btn-update-conceptosp').on('click',fnc_update_plame);
     $(document).on('click','.btn-update-plame', fnc_get_plame);*/
+    $('#btn-saveplame').on('click',fnc_insert_plamedetalle);
+
     $(document).on('click','.btn-detalle-plame', fnc_get_plame);
     fnc_list_plame();
+
+
 }
 /******************************************************************************************************************************************************************************/
 /*function fnc_reset_modalb()
@@ -95,11 +111,13 @@ function fnc_get_plame()
         {
             $('#plame-div1').hide();
             $('#plame-div2').show();
+            $('#btn-saveplame').show();
 
             $('#lbl-plame').html('Seleccionar Concepto Plame');
             for (var i = 0; i<data.length;i++) 
             {
                 if(data[i].Tipo == 1){
+                    $('#plame-div2').attr('data-codplame', data[i].Conceptoplame);
                     $('#tbt-plamedetallec').DataTable().row.add([
                     data[i].Conceptoplame,
                     data[i].Descripcion
@@ -109,7 +127,7 @@ function fnc_get_plame()
                     data[i].Conceptoplame,
                     data[i].Descripcion,
                     '<a class="btn btn-update-plame" data-idplame="'+data[i].Estado+'"><i class="icon-search"></i></a>',
-                    '<a class="btn btn-update-plame" data-idplame="'+data[i].Estado+'"><i class="icon-search"></i></a>'
+                    '<input type="checkbox" name="plame" value="0"/>'
                     ]).draw(false);
                 }
             } 
@@ -123,6 +141,42 @@ function fnc_get_plame()
         {
         }
     });
+}
+/******************************************************************************************************************************************************************************/
+function fnc_insert_plamedetalle ()
+{
+    if($('input:checkbox[name=plame]').prop('checked')){
+        $('input:checkbox[name=plame]').prop('checked').val(1);
+    }
+
+    var data={};    
+    data.ID_Concepto        = $('#txt-codigoplame').val();
+    data.txt_descripcion    = $('#txt-plamedesc').val();
+
+    /*$.ajax({
+        type: "POST",
+        url: "insert_plame",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        beforeSend: function (resp)
+        {
+            
+        },
+        success: function (resp)                                                                                                                        
+        {  
+            alert("Guardado correctamente");
+            $('#Modal-plame').modal('hide');
+            fnc_list_plame();
+        },
+        complete: function () 
+        {     
+        },
+        error: function(resp)
+        {
+        }
+    });*/
 }
 /******************************************************************************************************************************************************************************/
 /*function fnc_insert_plame ()

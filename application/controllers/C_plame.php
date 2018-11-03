@@ -29,12 +29,12 @@ public function get_plame()
         echo json_encode($get_plame);
     }
 /************************************************************************************************************************************************************************/
-public function insert_plame()
+public function insert_plamedetalle()
     {
         $json = file_get_contents('php://input');
         $data = json_decode($json,TRUE);
-        $insert_plame=$this->m_plame->insert_plame($data);
-        echo json_encode($insert_plame);
+        $insert_plamedetalle=$this->m_plame->insert_plamedetalle($data);
+        echo json_encode($insert_plamedetalle);
     }
 /************************************************************************************************************************************************************************/
 public function update_plame()

@@ -23,12 +23,13 @@
       <span class="navbar-brand mb-0 h1" id="lbl-plame">Conceptos Plame</span>
     </div>
     <div class="navbar-nav ml-auto">
+      <button type="button" class="btn btn-success" id="btn-saveplame" style="display: none;"><i class="icon-save"></i>&nbsp;Guardar</button>
     </div>
   </nav>
 
     <div class="row" id="plame-div1">
       <div class="col-sm-8 offset-sm-2">
-        <table id="tbt-plame" class="display nowrap compact" style="width:100%;">
+        <table id="tbt-plame" class="row-border hover compact" style="width:100%;">
           <thead>
               <tr>
                   <th>CODIGO</th>
@@ -43,7 +44,7 @@
       </div>
     </div>
 
-    <div class="row" id="plame-div2" style="display: none;">
+    <div class="row" id="plame-div2" data-codplame="" style="display: none;">
       <div class="col-sm-8 offset-sm-2">
         <table id="tbt-plamedetallec" class="display nowrap compact" style="width:100%;">
           <thead>
@@ -63,7 +64,7 @@
       </div>
       <div class="col-sm-8 offset-sm-2">
         <br>
-        <table id="tbt-plamedetalle" class="display nowrap compact" style="width:100%;">
+        <table id="tbt-plamedetalle" class="row-border hover compact" style="width:100%;">
           <thead>
               <tr>
                   <th>CODIGO</th>
