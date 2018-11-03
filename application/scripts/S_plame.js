@@ -57,7 +57,7 @@ function init_plame()
     
     $('#btn-update-conceptosp').on('click',fnc_update_plame);
     $(document).on('click','.btn-update-plame', fnc_get_plame);*/
-    $('#btn-saveplame').on('click',fnc_insert_plamedetalle);
+    $('input[type=checkbox]').on('change',fnc_insert_plamedetalle);
 
     $(document).on('click','.btn-detalle-plame', fnc_get_plame);
     fnc_list_plame();
@@ -127,7 +127,7 @@ function fnc_get_plame()
                     data[i].Conceptoplame,
                     data[i].Descripcion,
                     '<a class="btn btn-update-plame" data-idplame="'+data[i].Estado+'"><i class="icon-search"></i></a>',
-                    '<input type="checkbox" name="plame" value="0"/>'
+                    '<input type="checkbox" id="'+data[i].Conceptoplame+'" name="'+data[i].Conceptoplame+'" value="0"/>'
                     ]).draw(false);
                 }
             } 
@@ -145,13 +145,22 @@ function fnc_get_plame()
 /******************************************************************************************************************************************************************************/
 function fnc_insert_plamedetalle ()
 {
-    if($('input:checkbox[name=plame]').prop('checked')){
+/*    if($('input:checkbox[name=plame]').prop('checked')){
         $('input:checkbox[name=plame]').prop('checked').val(1);
     }
+*/
 
-    var data={};    
+    //$().on('change', function() {
+        if ($('input[type=checkbox]').is(':checked') ) {
+            alert("Checkbox " + $('input[type=checkbox]').prop("id") +  " (" + $('input[type=checkbox]').val() + ") => Seleccionado");
+        } else {
+            alert("Checkbox " + $('input[type=checkbox]').prop("id") +  " (" + $('input[type=checkbox]').val() + ") => Deseleccionado");
+        }
+    //});
+
+  /*  var data={};    
     data.ID_Concepto        = $('#txt-codigoplame').val();
-    data.txt_descripcion    = $('#txt-plamedesc').val();
+    data.txt_descripcion    = $('#txt-plamedesc').val();*/
 
     /*$.ajax({
         type: "POST",
