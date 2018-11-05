@@ -31,10 +31,10 @@ public function get_plame($data)
 /******************************************************************************************************************************************************************************/
 public function insert_plamedetalle($data)
   {
-    $v_idchkplame       = $data['ID_chkplame'];
-    $v_texto            = $data['txt_descripcion'];
+    $ID_chkplame        = $data['ID_chkplame'];
+    $v_texto            = $data['txt_texto'];
     
-    $query=$this->db->query("CALL sp_insert_conceptosplame('$v_idchkplame','$v_descripcion')");   
+    $query=$this->db->query("CALL sp_insert_prueba('$ID_chkplame','$v_texto')");   
   }
 /************************************************************************************************************************************************************************/
 public function update_plame($data)

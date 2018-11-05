@@ -57,9 +57,17 @@ function init_plame()
     
     $('#btn-update-conceptosp').on('click',fnc_update_plame);
     $(document).on('click','.btn-update-plame', fnc_get_plame);*/
-    $('input[type=checkbox]').on('change',fnc_insert_plamedetalle);
+    $(document).on('change', ':checkbox', function() {
+        if ($(this).is(':checked')) {
+            $(this).val(1);
+        }else{
+            $(this).val(0);
+        }
+    });
 
     $(document).on('click','.btn-detalle-plame', fnc_get_plame);
+
+    $('#btn-saveplame').on('click',fnc_insert_plamedetalle);
     fnc_list_plame();
 
 
@@ -127,7 +135,7 @@ function fnc_get_plame()
                     data[i].Conceptoplame,
                     data[i].Descripcion,
                     '<a class="btn btn-update-plame" data-idplame="'+data[i].Estado+'"><i class="icon-search"></i></a>',
-                    '<input type="checkbox" id="'+data[i].Conceptoplame+'" name="'+data[i].Conceptoplame+'" value="0"/>'
+                    '<input type="checkbox" id="'+data[i].Conceptoplame+'" name="'+data[i].Estado+"[]"+'" value="0"/>'
                     ]).draw(false);
                 }
             } 
@@ -143,28 +151,23 @@ function fnc_get_plame()
     });
 }
 /******************************************************************************************************************************************************************************/
-function fnc_insert_plamedetalle ()
+function fnc_insert_plamedetalle()
 {
-/*    if($('input:checkbox[name=plame]').prop('checked')){
-        $('input:checkbox[name=plame]').prop('checked').val(1);
-    }
-*/
 
-    //$().on('change', function() {
-        if ($('input[type=checkbox]').is(':checked') ) {
-            alert("Checkbox " + $('input[type=checkbox]').prop("id") +  " (" + $('input[type=checkbox]').val() + ") => Seleccionado");
-        } else {
-            alert("Checkbox " + $('input[type=checkbox]').prop("id") +  " (" + $('input[type=checkbox]').val() + ") => Deseleccionado");
-        }
-    //});
+    var dataname = $(":checkbox").attr("name");
+    var categorias = new Array();
 
-  /*  var data={};    
-    data.ID_Concepto        = $('#txt-codigoplame').val();
-    data.txt_descripcion    = $('#txt-plamedesc').val();*/
+        $("input:checkbox[name='"+dataname+"']").each(function() {
+            categorias.push($(this).val());
+        });
+ 
+    var data={};    
+    data.ID_chkplame    = $("#plame-div2").attr("data-codplame");
+    data.txt_texto      = categorias.toString();
 
-    /*$.ajax({
+    $.ajax({
         type: "POST",
-        url: "insert_plame",
+        url: "insert_plamedetalle",
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -176,8 +179,6 @@ function fnc_insert_plamedetalle ()
         success: function (resp)                                                                                                                        
         {  
             alert("Guardado correctamente");
-            $('#Modal-plame').modal('hide');
-            fnc_list_plame();
         },
         complete: function () 
         {     
@@ -185,7 +186,7 @@ function fnc_insert_plamedetalle ()
         error: function(resp)
         {
         }
-    });*/
+    });
 }
 /******************************************************************************************************************************************************************************/
 /*function fnc_insert_plame ()

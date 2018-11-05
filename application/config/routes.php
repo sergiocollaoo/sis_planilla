@@ -131,7 +131,7 @@ $route['delete_banco'] 				= 'c_banco/delete_banco';
 /************************************************************************************************************************************************************************/
 $route['ConceptosPlame'] 			= 'c_plame/plame';
 $route['list_plame'] 				= 'c_plame/list_plame';
-$route['insert_plame'] 				= 'c_plame/insert_plame';
+$route['insert_plamedetalle'] 		= 'c_plame/insert_plamedetalle';
 $route['get_plame'] 				= 'c_plame/get_plame';
 $route['update_plame'] 				= 'c_plame/update_plame';
 $route['delete_plame'] 				= 'c_plame/delete_plame';
