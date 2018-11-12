@@ -57,6 +57,13 @@ $route['login'] 					= 'c_usuario/index';
 $route['login_usuario'] 			= 'c_usuario/login';
 $route['Inicio'] 					= 'c_usuario/inicio';
 /************************************************************************************************************************************************************************/
+$route['empresa_detalle'] 			= 'c_empresa/empresa_detalle';
+$route['list_empresa'] 				= 'c_empresa/list_empresa';
+$route['insert_empresa'] 			= 'c_empresa/insert_empresa';
+$route['get_empresa'] 				= 'c_empresa/get_empresa';
+$route['update_empresa'] 			= 'c_empresa/update_empresa';
+$route['delete_empresa'] 			= 'c_empresa/delete_empresa';
+/************************************************************************************************************************************************************************/
 $route['Personal'] 					= 'c_personal/personal';
 $route['list_personal'] 			= 'c_personal/list_personal';
 $route['insert_personal'] 			= 'c_personal/insert_personal';

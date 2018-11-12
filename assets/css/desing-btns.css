@@ -43,6 +43,7 @@
 .btn-box-success{
 	background-color: transparent;
 	background-image: none;
+    cursor:pointer;
 	border-color: #28a745;
 }
 
