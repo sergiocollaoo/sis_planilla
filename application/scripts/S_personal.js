@@ -2,177 +2,184 @@ $(document).ready(init_personal);
 /******************************************************************************************************************************************************************************/
 function init_personal ()
 {
-    $('#tbt-personal').DataTable({
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-        }
-    });
+    if ($('.modulo-personal').attr('id-empresa') != "")
+    {
 
-    $('#tbt-vinculolaboral').DataTable({
-        "paging":   false,
-        "ordering": false,
-        "info":     false,
-        "searching": false,
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-        }
-    });
+        $('#tbt-personal').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            }
+        });
 
-    $('#tbt-vinculoseguro').DataTable({
-        "paging":   false,
-        "ordering": false,
-        "info":     false,
-        "searching": false,
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-        }
-    });
+        $('#tbt-vinculolaboral').DataTable({
+            "paging":   false,
+            "ordering": false,
+            "info":     false,
+            "searching": false,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            }
+        });
 
-    $('#tbt-fechalaboral').DataTable({
-        "paging":   false,
-        "ordering": false,
-        "info":     false,
-        "searching": false,
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-        }
-    });
+        $('#tbt-vinculoseguro').DataTable({
+            "paging":   false,
+            "ordering": false,
+            "info":     false,
+            "searching": false,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            }
+        });
 
-    $('.btn-Personal').on('click', function(){
-        $('#lbl-personal').text('Nuevo Personal')
-        $('#div-tbtPersonal').hide();
-        $('#btn-Exportp').hide();
-        $('.btn-Personal').hide();
-        $('#prev-addPersonal').show();
-        $('#btn-SaveP').show();
-        $('#btn-CloseP').show();
-        $('#btn-update-personal').attr('data-idpersonal', '');
-    });
+        $('#tbt-fechalaboral').DataTable({
+            "paging":   false,
+            "ordering": false,
+            "info":     false,
+            "searching": false,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            }
+        });
 
-    $('#btn-CloseP').on('click', function(){
+        $('.btn-Personal').on('click', function(){
+            $('#lbl-personal').text('Nuevo Personal')
+            $('#div-tbtPersonal').hide();
+            $('#btn-Exportp').hide();
+            $('.btn-Personal').hide();
+            $('#prev-addPersonal').show();
+            $('#btn-SaveP').show();
+            $('#btn-CloseP').show();
+            $('#btn-update-personal').attr('data-idpersonal', '');
+        });
 
-        $('#collapseOne').addClass('show');
-        $('#collapseTwo').removeClass('show');
-        $('#collapseThree').removeClass('show');
-        $('#div-tbtPersonal').show();
-        $('#btn-Exportp').show();
-        $('.btn-Personal').show();
-        $('#div-addPersonal').hide();
-        $('#btn-SaveP').hide();
-        $('#btn-update-personal').hide();
-        $('#btn-CloseP').hide();
-        $('.cbo-tipodoc').val(0);
-        $('.cbo-nacionalidad').val(0);
-        $('.cbo-departamento').val(0);
-        $('.cbo-provincia').val(0);
-        $('.cbo-distrito').val(0);
-        $('.cbo-departamentodni').val(0);
-        $('.cbo-provinciadni').val(0);
-        $('.cbo-distritodni').val(0);
-        $('.cbo-estadocivil').val(0);
-        $('.cbo-banco').val(0);
-        $('.cbo-regpension').val(0);
-        $('.cbo-local').val(0);
-        $('.cbo-cargo').val(0);
-        $('.cbo-tcontrato').val(0);
-        $('.cbo-tpago').val(0);
-        $('#view-cbobanco').hide();
-        $('input[type=date]').val('');
-        $('#txt-cuspp').attr("disabled", true);
-        $('input:checkbox[name=chk-comision]').attr("disabled", true);
-        $('input:checkbox[name=chk-comision]').prop("checked", false);
-        $('input:radio[name=rd-sexo]').prop('checked', false);
-        $('input:radio[name=rd-sctr]').prop('checked', false);
-        $('#div-ver').hide();
+        $('#btn-CloseP').on('click', function(){
 
-        fnc_reset_personal();
-    });
-
-    $('.add-rs').on('click',function(){
-        $('#lbl-seguro').html('Agregar');
-        $('.cbo-regsalud').val(0);
-        $('.cbo-eps').val(0);
-        $('input[type=date]').val('');
-        $('#view-eps').hide();
-    });
-
-    $('#add-vinculolaboral').on('click', function(){
-        $('.cbo-local').val(0);
-        $('.cbo-cargo').val(0);
-        $('.cbo-tcontrato').val(0);
-        $('input[type=date]').val('');
-        $('#txt-viewfunc').html("");
-        fnc_reset_personal();
-    });
-
-    $('.span-ver').on('click', function(){
-        $('#div-ver').toggle("slow");
-    });
-
-    $('#txt-remuneracion').on('keyup', function(){
-        var PD = $(this).val()/30;
-        $('#txt-pordia').val(PD);
-        var PH = PD/8;
-        $('#txt-porhora').val(PH);
-    })
-
-    $('.cbo-tpago').on('change', function(){
-        if ($(this).val() == 2){
-            $('#view-cbobanco').show('slow');
-        }else{
-            $('#view-cbobanco').hide('slow');
-        }
-    })
-
-    $('.cbo-regsalud').on('change', function(){
-        if ($(this).val() == 2 || $(this).val() == 4) {
-            $('#view-eps').show('slow');
-        }else{
-            $('#view-eps').hide('slow');
-            $('.cbo-eps').val(0);
-        }
-    });
-
-    $('.cbo-regpension').change(function(){
-        if ($(this).val() <= 1) {
+            $('#collapseOne').addClass('show');
+            $('#collapseTwo').removeClass('show');
+            $('#collapseThree').removeClass('show');
+            $('#div-tbtPersonal').show();
+            $('#btn-Exportp').show();
+            $('.btn-Personal').show();
+            $('#div-addPersonal').hide();
+            $('#btn-SaveP').hide();
+            $('#btn-update-personal').hide();
+            $('#btn-CloseP').hide();
+            $('.cbo-tipodoc').val(0);
+            $('.cbo-nacionalidad').val(0);
+            $('.cbo-departamento').val(0);
+            $('.cbo-provincia').val(0);
+            $('.cbo-distrito').val(0);
+            $('.cbo-departamentodni').val(0);
+            $('.cbo-provinciadni').val(0);
+            $('.cbo-distritodni').val(0);
+            $('.cbo-estadocivil').val(0);
+            $('.cbo-banco').val(0);
+            $('.cbo-regpension').val(0);
+            $('.cbo-local').val(0);
+            $('.cbo-cargo').val(0);
+            $('.cbo-tcontrato').val(0);
+            $('.cbo-tpago').val(0);
+            $('#view-cbobanco').hide();
+            $('input[type=date]').val('');
+            $('#txt-cuspp').attr("disabled", true);
             $('input:checkbox[name=chk-comision]').attr("disabled", true);
             $('input:checkbox[name=chk-comision]').prop("checked", false);
-            $('#txt-cuspp').attr("disabled", true);
-            $('#txt-cuspp').val("");
-        }else{
-            $('input:checkbox[name=chk-comision]').attr("disabled", false);
-            $('#txt-cuspp').attr("disabled", false);
-        }
-    });
+            $('input:radio[name=rd-sexo]').prop('checked', false);
+            $('input:radio[name=rd-sctr]').prop('checked', false);
+            $('#div-ver').hide();
 
-    $('.cbo-cargo').change(function(){
-        $('#txt-viewfunc').html($('option:selected',this).attr('funcion-cargo'));
-    });
+            fnc_reset_personal();
+        });
 
-    $(document).on('click','.btn-update-personal', fnc_get_personal);
-    $(document).on('click','.btn-delete-personal', fnc_delete_personal);
-    $('#btn-update-personal').on('click',fnc_update_personal);
-    $('#btn-update-personal').on('click',fnc_update_vinculoseguro);
-    $('#btn-SaveP').on('click',fnc_insert_personal);
+        $('.add-rs').on('click',function(){
+            $('#lbl-seguro').html('Agregar');
+            $('.cbo-regsalud').val(0);
+            $('.cbo-eps').val(0);
+            $('input[type=date]').val('');
+            $('#view-eps').hide();
+        });
 
-    $('.cbo-departamento').on('change',fnc_get_provincia);
-    $('.cbo-departamentodni').on('change',fnc_get_provinciadni);
-    $('.cbo-provincia').on('change',fnc_get_distrito);
-    $('.cbo-provinciadni').on('change',fnc_get_distritodni);
+        $('#add-vinculolaboral').on('click', function(){
+            $('.cbo-local').val(0);
+            $('.cbo-cargo').val(0);
+            $('.cbo-tcontrato').val(0);
+            $('input[type=date]').val('');
+            $('#txt-viewfunc').html("");
+            fnc_reset_personal();
+        });
 
-    $('#save-vinculolaboral').on('click',fnc_insert_vinculolaboral);
-    $(document).on('click','.btn-update-vinculolaboral', fnc_get_vinculolaboral);
-    $(document).on('click','.btn-delete-vinculolaboral', fnc_delete_vinculolaboral);
-    $('#btn-update-vinculolaboral').on('click',fnc_update_vinculolaboral);
+        $('.span-ver').on('click', function(){
+            $('#div-ver').toggle("slow");
+        });
 
-    $('#save-vinculoseguro').on('click',fnc_insert_vinculoseguro);
-    $(document).on('click','.btn-update-vinculoseguro', fnc_get_vinculoseguro);
-    $(document).on('click','.btn-delete-vinculoseguro', fnc_delete_vinculoseguro);
-    $('#btn-update-vinculoseguro').on('click',fnc_update_vinculoseguro);
+        $('#txt-remuneracion').on('keyup', function(){
+            var PD = $(this).val()/30;
+            $('#txt-pordia').val(PD);
+            var PH = PD/8;
+            $('#txt-porhora').val(PH);
+        })
 
-    fnc_list_personal();
-    fnc_get_datoscombo();
-    fnc_get_departamento();
+        $('.cbo-tpago').on('change', function(){
+            if ($(this).val() == 2){
+                $('#view-cbobanco').show('slow');
+            }else{
+                $('#view-cbobanco').hide('slow');
+            }
+        })
+
+        $('.cbo-regsalud').on('change', function(){
+            if ($(this).val() == 2 || $(this).val() == 4) {
+                $('#view-eps').show('slow');
+            }else{
+                $('#view-eps').hide('slow');
+                $('.cbo-eps').val(0);
+            }
+        });
+
+        $('.cbo-regpension').change(function(){
+            if ($(this).val() <= 1) {
+                $('input:checkbox[name=chk-comision]').attr("disabled", true);
+                $('input:checkbox[name=chk-comision]').prop("checked", false);
+                $('#txt-cuspp').attr("disabled", true);
+                $('#txt-cuspp').val("");
+            }else{
+                $('input:checkbox[name=chk-comision]').attr("disabled", false);
+                $('#txt-cuspp').attr("disabled", false);
+            }
+        });
+
+        $('.cbo-cargo').change(function(){
+            $('#txt-viewfunc').html($('option:selected',this).attr('funcion-cargo'));
+        });
+
+        $(document).on('click','.btn-update-personal', fnc_get_personal);
+        $(document).on('click','.btn-delete-personal', fnc_delete_personal);
+        $('#btn-update-personal').on('click',fnc_update_personal);
+        $('#btn-update-personal').on('click',fnc_update_vinculoseguro);
+        $('#btn-SaveP').on('click',fnc_insert_personal);
+
+        $('.cbo-departamento').on('change',fnc_get_provincia);
+        $('.cbo-departamentodni').on('change',fnc_get_provinciadni);
+        $('.cbo-provincia').on('change',fnc_get_distrito);
+        $('.cbo-provinciadni').on('change',fnc_get_distritodni);
+
+        $('#save-vinculolaboral').on('click',fnc_insert_vinculolaboral);
+        $(document).on('click','.btn-update-vinculolaboral', fnc_get_vinculolaboral);
+        $(document).on('click','.btn-delete-vinculolaboral', fnc_delete_vinculolaboral);
+        $('#btn-update-vinculolaboral').on('click',fnc_update_vinculolaboral);
+
+        $('#save-vinculoseguro').on('click',fnc_insert_vinculoseguro);
+        $(document).on('click','.btn-update-vinculoseguro', fnc_get_vinculoseguro);
+        $(document).on('click','.btn-delete-vinculoseguro', fnc_delete_vinculoseguro);
+        $('#btn-update-vinculoseguro').on('click',fnc_update_vinculoseguro);
+
+        fnc_list_personal();
+        fnc_get_datoscombo();
+        fnc_get_departamento();
+    
+    }else{
+        window.location.href = 'Inicio';
+    }
 
 }
 /******************************************************************************************************************************************************************************/
@@ -195,8 +202,8 @@ function fnc_list_personal()
         data[i].Nombres,
         data[i].Local,
         data[i].Cargo,
-        '<a class="btn btn-update-personal" data-idpersonal="'+data[i].IDPersonal+'"><i class="fa fa-edit"></i></a>'+
-        '<a class="btn btn-delete-personal" data-idpersonal="'+data[i].IDPersonal+'"><i class="fa fa-trash"></i></a>'
+        '<a class="btn btn-sm btn-update-personal" data-idpersonal="'+data[i].IDPersonal+'"><i class="fa fa-edit"></i></a>'+
+        '<a class="btn btn-sm btn-delete-personal" data-idpersonal="'+data[i].IDPersonal+'"><i class="fa fa-trash"></i></a>'
         ]).draw(false);
     }     
     });

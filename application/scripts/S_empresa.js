@@ -3,9 +3,37 @@ $(document).ready(init_empresa);
 function init_empresa()
 {
     fnc_list_empresa();
-    fnc_get_empresa();
     $('#btn-save-empresa').on('click', fnc_insert_empresa);
     $(document).on('click', '.ver-detalle-empresa', fnc_get_empresa);
+    
+    var ID_Empresa = sessionStorage.getItem("ID_Empresa");
+    var RS = sessionStorage.getItem("RS");
+    var RUC = sessionStorage.getItem("RUC");
+
+    //Empresa detalle
+    $('#div-detalle-empresa').attr('id-empresa', ID_Empresa)
+    $('#name-empresa').html(RS)
+    $('#ruc-empresa').html(RUC)
+    // sessionStorage.clear();
+
+    //Personal
+    $('.modulo-personal').attr('id-empresa', ID_Empresa);
+
+    //Cargo
+    $('.modulo-cargo').attr('id-empresa', ID_Empresa);
+
+    //Local
+    $('.modulo-local').attr('id-empresa', ID_Empresa);
+
+    //Plame
+    $('.modulo-plame').attr('id-empresa', ID_Empresa);
+
+    //Productos
+    $('.modulo-productos').attr('id-empresa', ID_Empresa);
+
+    // $('#menu-maestro').on('click', function(){
+    //     window.location.href = 'Personal';
+    // });
 }
 /******************************************************************************************************************************************************************************/
 function fnc_list_empresa()
@@ -13,30 +41,30 @@ function fnc_list_empresa()
     $.getJSON("list_empresa", function (data){ 
         $.each(data, function(index, val){
             $('#card-empresa').append('<div class="col-xl-3 col-sm-6 mb-3">'+
-        '<div class="card text-white bg-primary o-hidden h-100">'+
-            '<div class="card-body">'+
-                '<div class="card-body-icon">'+
-                    '<i class="icon-office"></i>'+
-                '</div>'+
-                '<div class="mr-5">'+val.RUC+'</div>'+
-                '<div class="mr-5">'+val.RS+'</div>'+
-            '</div>'+
-            '<a class="card-footer text-white clearfix small ver-detalle-empresa" ID_Empresa="'+val.IDEmpresa+'" href="empresa_detalle?ID_Empresa='+val.IDEmpresa+'">'+
-                '<span class="float-left">Ver detalles</span>'+
-                '<span class="float-right">'+
-                    '<i class="fa fa-angle-right"></i>'+
-                '</span>'+
-            '</a>'+
-        '</div>'+
-    '</div>');
+                                        '<div class="card text-info border-info o-hidden h-100">'+
+                                            '<div class="card-body">'+
+                                                '<div class="card-body-icon">'+
+                                                    '<i class="icon-office"></i>'+
+                                                '</div>'+
+                                                '<div class="mr-5">'+val.RUC+'</div>'+
+                                                '<div class="mr-5">'+val.RS+'</div>'+
+                                            '</div>'+
+                                            '<a class="card-footer text-info clearfix small ver-detalle-empresa" id-empresa="'+val.IDEmpresa+'" href="javascript:void(0)">'+
+                                                '<span class="float-left">Ver detalles</span>'+
+                                                '<span class="float-right">'+
+                                                    '<i class="fa fa-angle-right"></i>'+
+                                                '</span>'+
+                                            '</a>'+
+                                        '</div>'+
+                                    '</div>');
 
         })
 
             if($('#card-empresa').children().length != 0){
-                $('.subheader-page').show();
+                $('.subheader-page-empresa').show();
                 $('#empty-company').hide();
             }else{
-                $('.subheader-page').hide();
+                $('.subheader-page-empresa').hide();
                 $('#empty-company').append('<div class="col-xl-2 offset-xl-5">'+
                                             '<div class="btn-box btn-box-success">'+
                                                 '<button data-toggle="modal" data-target="#Modal-empresa">'+
@@ -89,62 +117,36 @@ function fnc_insert_empresa ()
 /******************************************************************************************************************************************************************************/
 function fnc_get_empresa()
 {
-    var ID_Empresa = getParameterByName('ID_Empresa');
-    var data={};
-    data.ID_Empresa = ID_Empresa
+    var data={};   
+    data.ID_Empresa    = $(this).attr('id-empresa');
 
     $.ajax({
-    url : "get_empresa",
-    type: "POST",
-    data: JSON.stringify(data),
-    dataType:"json",
-    success:function(resp){
-      
-            $('#div-detalle-empresa').attr('id-empresa', resp[0].IDEmpresa)
-            $('#name-empresa').html(resp[0].RS);
-            $('#ruc-empresa').html(resp[0].RUC);
+        type: "POST",
+        url: "get_empresa",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        beforeSend: function () 
+        {            
+        },
+        success: function (resp) 
+        {  
+            sessionStorage.setItem("ID_Empresa", resp.IDEmpresa);
+            sessionStorage.setItem("RS", resp.RS);
+            sessionStorage.setItem("RUC", resp.RUC);
+
+            window.location.href = 'empresa_detalle';
+        },
+        complete: function () 
+        {           
+        },
+        error: function(resp)
+        {
         }
     });
 }
-/******************************************************************************************************************************************************************************/
-//function fnc_get_empresa()
-//{
-    // var url_empresa_detalle = $(this).attr("href", 'empresa_detalle');
-    //var ID = parseInt($(this).attr('id-empresa'));
-    //$.getJSON('empresa_detalle', function(data){
-        // $.each(data, function(index, val){
-      //      $('#div-detalle-empresa').attr('id-empresa', data.IDEmpresa);
-        // });
-    //});
-
-    // var data={};
-    // data.ID_Empresa  = parseInt($(this).attr('id-empresa'));
-    // $.ajax({
-    //     type: "POST",
-    //     url: 'get_empresa',
-    //     data: JSON.stringify(data),
-    //     contentType: "application/json; charset=utf-8",
-    //     dataType: "json",
-    //     async: false,
-    //     beforeSend: function () 
-    //     {
-    //     },
-    //     success: function (resp) 
-    //     {
-    //         $('#div-detalle-empresa').attr('id-empresa', resp.IDEmpresa)
-    //         $('#name-empresa').html(resp.RS);
-    //         $('#ruc-empresa').html(resp.RUC);
-    //     },
-    //     complete: function () 
-    //     {
-            
-    //     },
-    //     error: function(resp)
-    //     {
-    //     }
-    // })
-//}
-/***********************************************************************************************************************************************************/
+/*****************************************************************************************************************************************************************************/
 /*function fnc_update_empresa()
 {   
     var data={};

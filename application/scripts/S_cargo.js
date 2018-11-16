@@ -2,19 +2,24 @@ $(document).ready(init_cargo);
 /******************************************************************************************************************************************************************************/
 function init_cargo()
 {
-    $('#tbt-cargo').DataTable({
-        responsive: true,
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-        }
-    });
+    if ($('.modulo-personal').attr('id-empresa') != "")
+    {
+        $('#tbt-cargo').DataTable({
+            responsive: true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            }
+        });
 
-    $('#btn-Cargo').on('click', fnc_reset_modalc)
-    $('#btn-insert-cargo').on('click',fnc_insert_cargo);
-    $('#btn-update-cargo').on('click',fnc_update_cargo);
-    $(document).on('click','.btn-update-cargo', fnc_get_cargo);
-    $(document).on('click','.btn-delete-cargo', fnc_delete_cargo);
-    fnc_list_cargo();
+        $('#btn-Cargo').on('click', fnc_reset_modalc)
+        $('#btn-insert-cargo').on('click',fnc_insert_cargo);
+        $('#btn-update-cargo').on('click',fnc_update_cargo);
+        $(document).on('click','.btn-update-cargo', fnc_get_cargo);
+        $(document).on('click','.btn-delete-cargo', fnc_delete_cargo);
+        fnc_list_cargo();
+    }else{
+        window.location.href = 'Inicio';
+    }
 }
 /******************************************************************************************************************************************************************************/
 function fnc_reset_modalc()

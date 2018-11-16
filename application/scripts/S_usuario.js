@@ -1,34 +1,7 @@
 $(document).ready(init_usuario);
 /******************************************************************************************************************************************************************************/
-/*var $datatable_usuario      =   $('#datatable-usuario').DataTable();
-var $form_login             =   $('#form-login');
-var $form_registrar_u       =   $('#form-registrar-u');*/
-
 var $txt_usuario            =   $('#txt-usuario');
 var $txt_password           =   $('#txt-password');
-/*var $nom_usuario            =   $('.nom-usuario');
-var $profile_title          =   $('.profile-title');
-var $img_usuario            =   $('.img-usuario');
-var $img_usuariox           =   $('.img-usuariox');*/
-
-/*var $login_wrapper          =   $('.login-wrapper');*/
-
-/*var $file_foto_perfil       =   $('#file-foto-perfil');
-var $txt_id_u               =   $('#txt-id-u');
-var $txt_nuevo_u            =   $('#txt-nuevo-u');
-var $txt_nuevo_p            =   $('#txt-nuevo-p');
-var $txt_observacion_u      =   $('#txt-observacion-u');
-var $chck_estado_usuario    =   $('#chck-estado-usuario');
-
-var $btn_registro_u         =   $('#btn-registro-u');
-var $btn_sct_volver_u       =   $('.btn-sct-volver-u');
-var $sct_tabla_u            =   $('#sct-tabla-u');
-var $sct_registro_u         =   $('#sct-registro-u');
-
-var $title_usuario          =   $('.title-usuario');
-var $btn_editar_usuario     =   $('#btn-editar-usuario');
-var $btn_registrar_usuario  =   $('#btn-registrar-usuario');
-*/
 /******************************************************************************************************************************************************************************/
 function init_usuario ()
 {

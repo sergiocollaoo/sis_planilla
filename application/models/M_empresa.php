@@ -25,20 +25,22 @@ public function insert_empresa($data)
 /************************************************************************************************************************************************************************/
 public function get_empresa($ID_Empresa)
   {
-    // $query=$this->db->query("CALL sp_get_empresa($ID_Empresa)");
-    $this->db->select('e.IDEmpresa, e.RUC, e.RS, e.Estado');
+    $query=$this->db->query("CALL sp_get_empresa('$ID_Empresa')");
+
+    if ($query->num_rows()==1)
+    {
+      return $query->row();
+    }
+    else
+    {
+      return false; 
+    }
+/*    $this->db->select('e.IDEmpresa, e.RUC, e.RS, e.Estado');
     $this->db->from('dba_empresa e');
     $this->db->where('e.IDEmpresa',$ID_Empresa);
+    
     $consulta = $this->db->get();
-    return $consulta->result();
-    // if ($query->num_rows()==1)
-    // {
-    //   return $query->row();
-    // }
-    // else
-    // {
-    //   return false; 
-    // } 
+    return $consulta->result();*/
   }
 /************************************************************************************************************************************************************************/
 public function update_empresa($data)
