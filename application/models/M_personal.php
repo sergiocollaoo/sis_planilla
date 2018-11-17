@@ -2,9 +2,11 @@
 
 class M_personal extends CI_Model {
 /******************************************************************************************************************************************************************************/
-public function list_personal()
+public function list_personal($data)
   {
-    $query=$this->db->query("CALL sp_list_personal()");
+    $ID_Empresa  = $data['ID_Empresa'];
+
+    $query=$this->db->query("CALL sp_list_personal($ID_Empresa)");
     if ($query->num_rows()>0)
     {
       return $query->result();
@@ -21,8 +23,9 @@ public function insert_personal($data)
     $ID_Documento       = $data['ID_Documento'];
     $v_apellidos        = $data['txt_apellidos'];
     $v_nombres          = $data['txt_nombres'];
+    $ID_Empresa         = $data['ID_Empresa'];
     
-    $query=$this->db->query("CALL sp_insert_personal('$ID_Numdoc', '$ID_Documento', '$v_apellidos', '$v_nombres')");
+    $query=$this->db->query("CALL sp_insert_personal('$ID_Numdoc', '$ID_Documento', '$v_apellidos', '$v_nombres', $ID_Empresa)");
     if ($query->num_rows()>0)
     {
         return $query->row();

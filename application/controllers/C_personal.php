@@ -17,7 +17,9 @@ public function personal()
 /************************************************************************************************************************************************************************/
 public function list_personal()
     {
-        $list_personal=$this->m_personal->list_personal();
+        $json = file_get_contents('php://input');
+        $data = json_decode($json,TRUE);
+        $list_personal=$this->m_personal->list_personal($data);
         echo json_encode($list_personal);
     }
 /************************************************************************************************************************************************************************/    

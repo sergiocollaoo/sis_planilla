@@ -2,9 +2,11 @@
 
 class M_producto extends CI_Model {
 /******************************************************************************************************************************************************************************/
-public function list_producto()
+public function list_producto($data)
   {
-    $query=$this->db->query("CALL sp_list_productos()");
+    $ID_Empresa  = $data['ID_Empresa'];
+
+    $query=$this->db->query("CALL sp_list_productos($ID_Empresa)");
     if ($query->num_rows()>0)
     {
       return $query->result();
@@ -15,9 +17,11 @@ public function list_producto()
     } 
   }
 /******************************************************************************************************************************************************************************/
-public function list_menajeria()
+public function list_menajeria($data)
   {
-    $query=$this->db->query("CALL sp_list_menajeria()");
+    $ID_Empresa  = $data['ID_Empresa'];
+
+    $query=$this->db->query("CALL sp_list_menajeria($ID_Empresa)");
     if ($query->num_rows()>0)
     {
       return $query->result();

@@ -2,9 +2,11 @@
 
 class M_cargo extends CI_Model {
 /******************************************************************************************************************************************************************************/
-public function list_cargo()
+public function list_cargo($data)
   {
-    $query=$this->db->query("CALL sp_list_cargo()");
+    $ID_Empresa  = $data['ID_Empresa'];
+
+    $query=$this->db->query("CALL sp_list_cargo($ID_Empresa)");
     if ($query->num_rows()>0)
     {
       return $query->result();

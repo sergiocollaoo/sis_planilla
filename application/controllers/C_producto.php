@@ -17,13 +17,17 @@ public function producto()
 /************************************************************************************************************************************************************************/
 public function list_producto()
     {
-        $list_producto=$this->m_producto->list_producto();
+        $json = file_get_contents('php://input');
+        $data = json_decode($json,TRUE);
+        $list_producto=$this->m_producto->list_producto($data);
         echo json_encode($list_producto);
     }
 /************************************************************************************************************************************************************************/
 public function list_menajeria()
     {
-        $list_menajeria=$this->m_producto->list_menajeria();
+        $json = file_get_contents('php://input');
+        $data = json_decode($json,TRUE);
+        $list_menajeria=$this->m_producto->list_menajeria($data);
         echo json_encode($list_menajeria);
     }
 /************************************************************************************************************************************************************************/

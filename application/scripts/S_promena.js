@@ -49,37 +49,77 @@ function fnc_reset_modalb()
 /******************************************************************************************************************************************************************************/
 function fnc_list_producto()
 {
-    $.getJSON("list_producto", function (data){ 
+    var data={};
+    data.ID_Empresa  = parseInt($('.modulo-productos').attr('id-empresa'));
 
-    $('#tbt-producto').DataTable().row().clear().draw(false);
-    for (var i = 0; i<data.length;i++) 
-    {
-        $('#tbt-producto').DataTable().row.add([
-        data[i].IDPromena,
-        data[i].Descripcion,
-        data[i].Precio,
-        '<a class="btn btn-update-producto" data-idpromena="'+data[i].IDPromena+'" data-toggle="modal" data-target="#Modal-promena"><i class="fa fa-edit"></i></a>'+
-        '<a class="btn btn-delete-producto" data-idpromena="'+data[i].IDPromena+'"><i class="fa fa-trash"></i></a>'
-        ]).draw(false);
-    }     
+    $.ajax({
+        type: "POST",
+        url: "list_producto",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        beforeSend: function () 
+        {
+            $('#tbt-producto').DataTable().row().clear().draw(false);
+        },
+        success: function (data)
+        {
+            for (var i = 0; i<data.length;i++) 
+            {
+                $('#tbt-producto').DataTable().row.add([
+                data[i].IDPromena,
+                data[i].Descripcion,
+                data[i].Precio,
+                '<a class="btn btn-sm btn-update-producto" data-idpromena="'+data[i].IDPromena+'" data-toggle="modal" data-target="#Modal-promena"><i class="fa fa-edit"></i></a>'+
+                '<a class="btn btn-sm btn-delete-producto" data-idpromena="'+data[i].IDPromena+'"><i class="fa fa-trash"></i></a>'
+                ]).draw(false);
+            }     
+        },
+        complete: function () 
+        {
+        },
+        error: function(data)
+        {
+        }
     });
 }
 /******************************************************************************************************************************************************************************/
 function fnc_list_menajeria()
 {
-    $.getJSON("list_menajeria", function (data){ 
+    var data={};
+    data.ID_Empresa  = parseInt($('.modulo-productos').attr('id-empresa'));
 
-    $('#tbt-manejeria').DataTable().row().clear().draw(false);
-    for (var i = 0; i<data.length;i++) 
-    {
-        $('#tbt-manejeria').DataTable().row.add([
-        data[i].IDPromena,
-        data[i].Descripcion,
-        data[i].Precio,
-        '<a class="btn btn-update-menajeria" data-idpromena="'+data[i].IDPromena+'" data-toggle="modal" data-target="#Modal-promena"><i class="fa fa-edit"></i></a>'+
-        '<a class="btn btn-delete-menajeria" data-idpromena="'+data[i].IDPromena+'"><i class="fa fa-trash"></i></a>'
-        ]).draw(false);
-    }     
+    $.ajax({
+        type: "POST",
+        url: "list_menajeria",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        beforeSend: function () 
+        {
+            $('#tbt-manejeria').DataTable().row().clear().draw(false);
+        },
+        success: function (data)
+        {
+            for (var i = 0; i<data.length;i++) 
+            {
+                $('#tbt-manejeria').DataTable().row.add([
+                data[i].IDPromena,
+                data[i].Descripcion,
+                data[i].Precio,
+                '<a class="btn btn-sm btn-update-menajeria" data-idpromena="'+data[i].IDPromena+'" data-toggle="modal" data-target="#Modal-promena"><i class="fa fa-edit"></i></a>'+
+                '<a class="btn btn-sm btn-delete-menajeria" data-idpromena="'+data[i].IDPromena+'"><i class="fa fa-trash"></i></a>'
+                ]).draw(false);
+            }     
+        },
+        complete: function () 
+        {
+        },
+        error: function(data)
+        {
+        }
     });
 }
 /******************************************************************************************************************************************************************************/

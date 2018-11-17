@@ -33,19 +33,39 @@ function fnc_reset_modalc()
 /******************************************************************************************************************************************************************************/
 function fnc_list_cargo()
 {
-    $.getJSON("list_cargo", function (data){ 
+    var data={};
+    data.ID_Empresa  = parseInt($('.modulo-cargo').attr('id-empresa'));
 
-    $('#tbt-cargo').DataTable().row().clear().draw(false);
-    for (var i = 0; i<data.length;i++) 
-    {
-        $('#tbt-cargo').DataTable().row.add([i+1,
-        data[i].Descripcion,
-        data[i].Estado == 1 ?'<span class="badge badge-pill badge-success">Activo</span>' : '<span class="badge badge-pill badge-secondary">Inactivo</span>',
-        '<a class="btn btn-update-cargo" data-idcargo="'+data[i].IDCargo+'" data-toggle="modal" data-target="#Modal-cargo"><i class="fa fa-edit"></i></a>'+
-        '<a class="btn btn-delete-cargo" data-idcargo="'+data[i].IDCargo+'"><i class="fa fa-trash"></i></a>'
-        ]).draw(false);
-    }     
-    });
+    $.ajax({
+        type: "POST",
+        url: "list_cargo",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        beforeSend: function () 
+        {
+            $('#tbt-cargo').DataTable().row().clear().draw(false);
+        },
+        success: function (data)
+        {
+            for (var i = 0; i<data.length;i++) 
+            {
+                $('#tbt-cargo').DataTable().row.add([i+1,
+                data[i].Descripcion,
+                data[i].Estado == 1 ?'<span class="badge badge-pill badge-success">Activo</span>' : '<span class="badge badge-pill badge-secondary">Inactivo</span>',
+                '<a class="btn btn-sm btn-update-cargo" data-idcargo="'+data[i].IDCargo+'" data-toggle="modal" data-target="#Modal-cargo"><i class="fa fa-edit"></i></a>'+
+                '<a class="btn btn-sm btn-delete-cargo" data-idcargo="'+data[i].IDCargo+'"><i class="fa fa-trash"></i></a>'
+                ]).draw(false);
+            }     
+        },
+        complete: function () 
+        {
+        },
+        error: function(data)
+        {
+        }
+    });  
 }
 /******************************************************************************************************************************************************************************/
 function fnc_insert_cargo ()

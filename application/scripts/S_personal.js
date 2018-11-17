@@ -190,23 +190,43 @@ function fnc_reset_personal()
 /******************************************************************************************************************************************************************************/
 function fnc_list_personal()
 {
-    $.getJSON("list_personal", function (data){
+    var data={};
+    data.ID_Empresa  = parseInt($('.modulo-personal').attr('id-empresa'));
 
-    $('#tbt-personal').DataTable().row().clear().draw(false);
-    for (var i = 0; i<data.length;i++) 
-    {
-        $('#tbt-personal').DataTable().row.add([
-        i+1,
-        data[i].IDNumdoc,
-        data[i].Apellidos,
-        data[i].Nombres,
-        data[i].Local,
-        data[i].Cargo,
-        '<a class="btn btn-sm btn-update-personal" data-idpersonal="'+data[i].IDPersonal+'"><i class="fa fa-edit"></i></a>'+
-        '<a class="btn btn-sm btn-delete-personal" data-idpersonal="'+data[i].IDPersonal+'"><i class="fa fa-trash"></i></a>'
-        ]).draw(false);
-    }     
-    });
+    $.ajax({
+        type: "POST",
+        url: "list_personal",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        beforeSend: function () 
+        {
+            $('#tbt-personal').DataTable().row().clear().draw(false);
+        },
+        success: function (data)
+        {
+            for (var i = 0; i<data.length;i++) 
+            {
+                $('#tbt-personal').DataTable().row.add([
+                i+1,
+                data[i].IDNumdoc,
+                data[i].Apellidos,
+                data[i].Nombres,
+                data[i].Local,
+                data[i].Cargo,
+                '<a class="btn btn-sm btn-update-personal" data-idpersonal="'+data[i].IDPersonal+'"><i class="fa fa-edit"></i></a>'+
+                '<a class="btn btn-sm btn-delete-personal" data-idpersonal="'+data[i].IDPersonal+'"><i class="fa fa-trash"></i></a>'
+                ]).draw(false);
+            }
+        },
+        complete: function () 
+        {
+        },
+        error: function(data)
+        {
+        }
+    });  
 }
 /******************************************************************************************************************************************************************************/
 function fnc_insert_personal ()
@@ -216,6 +236,7 @@ function fnc_insert_personal ()
     data.ID_Documento           = $('.cbo-tipodoc').val();
     data.txt_apellidos          = $('#txt-apellidos_i').val();
     data.txt_nombres            = $('#txt-nombres_i').val();
+    data.ID_Empresa             = parseInt($('.modulo-personal').attr('id-empresa'));
 
     $.ajax({
         type: "POST",
@@ -304,6 +325,7 @@ function fnc_get_personal()
             $('.cbo-regpension').val(resp.IDRegpension);
             (resp.IDRegpension == 1 ? $('#txt-cuspp').attr("disabled", true) : $('#txt-cuspp').attr("disabled", false));
             (resp.IDRegpension == 1 ? $('input:checkbox[name=chk-comision]').attr("disabled", true) : $('input:checkbox[name=chk-comision]').attr("disabled", false));
+            (resp.Comision == 1 ? $('input:checkbox[name=chk-comision]').attr("disabled", false) : $('input:checkbox[name=chk-comision]').attr("disabled", true));
             (resp.Comision == 1 ? $('input:checkbox[name=chk-comision]').prop('checked', true) : $('input:checkbox[name=chk-comision]').prop('checked', false));
             $('#txt-cuspp').val(resp.Cuspp);
             $('.cbo-tpago').val(resp.IDTpago);
@@ -515,8 +537,8 @@ function fnc_list_vinculolaboral()
                     data[i].Fechac,
                     data[i].Tregistrofile,
                     data[i].Contratofile,
-                    '<a class="btn btn-update-vinculolaboral" data-idvinculo="'+data[i].IDVinculo+'" data-toggle="modal" data-target="#Modal-vinculolaboral"><i class="fa fa-edit"></i></a>'+
-                    '<a class="btn btn-delete-vinculolaboral" data-idvinculo="'+data[i].IDVinculo+'"><i class="fa fa-trash"></i></a>'
+                    '<a class="btn btn-sm btn-update-vinculolaboral" data-idvinculo="'+data[i].IDVinculo+'" data-toggle="modal" data-target="#Modal-vinculolaboral"><i class="fa fa-edit"></i></a>'+
+                    '<a class="btn btn-sm btn-delete-vinculolaboral" data-idvinculo="'+data[i].IDVinculo+'"><i class="fa fa-trash"></i></a>'
                     ]).draw(false);
                 } 
         },
@@ -853,8 +875,8 @@ function fnc_list_vinculoseguro()
                     data[i].Fechai,
                     data[i].Fechac,
                     data[i].EPS,
-                    '<a class="btn btn-update-vinculoseguro" data-idseguro="'+data[i].IDSeguro+'" data-toggle="modal" data-target="#Modal-vinculoseguro"><i class="fa fa-edit"></i></a>'+
-                    '<a class="btn btn-delete-vinculoseguro" data-idseguro="'+data[i].IDSeguro+'"><i class="fa fa-trash"></i></a>'
+                    '<a class="btn btn-sm btn-update-vinculoseguro" data-idseguro="'+data[i].IDSeguro+'" data-toggle="modal" data-target="#Modal-vinculoseguro"><i class="fa fa-edit"></i></a>'+
+                    '<a class="btn btn-sm btn-delete-vinculoseguro" data-idseguro="'+data[i].IDSeguro+'"><i class="fa fa-trash"></i></a>'
                     ]).draw(false);
                 } 
         },

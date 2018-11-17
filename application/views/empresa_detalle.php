@@ -87,7 +87,7 @@
             <div class="list-group">
               <a href="RegimenPensionario" class="list-group-item list-group-item-action">Régimen Pensionario</a>
               <a href="Banco" class="list-group-item list-group-item-action">Bano</a>
-              <a href="ConceptosPlame" class="list-group-item list-group-item-action">Concpetos Plame</a>
+              <a href="ConceptosPlame" class="list-group-item list-group-item-action">Conceptos Plame</a>
               <a href="Productos" class="list-group-item list-group-item-action">Productos y Menajería</a>
               <a href="TiposContrato" class="list-group-item list-group-item-action">Tipos de contratos</a>
             </div>
